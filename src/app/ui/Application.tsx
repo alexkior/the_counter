@@ -9,11 +9,11 @@ const Stack = createStackNavigator<RouteList>()
 
 export const Application: React.FC = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator
         initialRouteName="HomePage"
         screenOptions={{
-          headerShown: true
+          headerShown: false
         }}
       >
         <Stack.Screen name="HomePage" component={Pages.HomePage} />

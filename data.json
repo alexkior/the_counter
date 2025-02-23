@@ -1,61 +1,60 @@
 {
-    "data": [
+  "data": [
+    {
+      "iconName": "sun",
+      "color": "red",
+      "isPositive": true,
+      "days": [
         {
-            "iconName": "sun",
-            "color": "red",
-            "isPositive": true,
-            "days": [ 
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 1,
-                "weekDay": "wed",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 2,
-                "weekDay": "thu",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 3,
-                "weekDay": "fri",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 4,
-                "weekDay": "sat",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 5,
-                "weekDay": "sun",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 6,
-                "weekDay": "mon",
-                "isSelected": false
-                },
-                {
-                "year": 2025,
-                "month": 1,
-                "day": 7,
-                "weekDay": "tue",
-                "isSelected": false
-                }
-
-            ]
+          "year": 2025,
+          "month": 1,
+          "day": 1,
+          "weekDay": "wed",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 2,
+          "weekDay": "thu",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 3,
+          "weekDay": "fri",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 4,
+          "weekDay": "sat",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 5,
+          "weekDay": "sun",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 6,
+          "weekDay": "mon",
+          "isSelected": false
+        },
+        {
+          "year": 2025,
+          "month": 1,
+          "day": 7,
+          "weekDay": "tue",
+          "isSelected": false
         }
-    ]
+      ]
+    }
+  ]
 }

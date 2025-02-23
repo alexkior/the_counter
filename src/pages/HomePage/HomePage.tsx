@@ -9,13 +9,14 @@ export const HomePage: React.FC = () => {
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
     const dateString = date?.dateString
     const [isClicked, setIsClicked] = useState(false)
+    const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
     return (
       <Pressable style={styles.customDay} onPress={() => setIsClicked(!isClicked)}>
         <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
         <Entypo
           name="drink"
           size={24}
-          color={dateString && dateString > new Date().toISOString().split('T')[0] ? 'gray' : isClicked ? 'red' : 'green'}
+          color={isDateOlderThanToday ? 'gray' : isClicked ? !isDateOlderThanToday ? 'gray' : 'red' : 'green'}
         />
       </Pressable>
     )

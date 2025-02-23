@@ -3,29 +3,33 @@ import { StyleSheet, View, Text, Pressable } from 'react-native'
 import { CalendarList, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
 
+import XDate from 'xdate'
+
 import Entypo from '@expo/vector-icons/Entypo'
 
 export const HomePage: React.FC = () => {
+  const RANGE = 12
+
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
     const dateString = date?.dateString
     const [isClicked, setIsClicked] = useState(false)
     const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
+
     return (
       <Pressable style={styles.customDay} onPress={() => setIsClicked(!isClicked)}>
         <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
         <Entypo
           name="drink"
           size={24}
-          color={isDateOlderThanToday ? 'gray' : isClicked ? !isDateOlderThanToday ? 'gray' : 'red' : 'green'}
+          color={isDateOlderThanToday ? 'gray' : isClicked ? (!isDateOlderThanToday ? 'red' : 'gray') : 'green'}
         />
       </Pressable>
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function renderCustomHeader(date: any) {
-    const header = date.toString('MMMM yyyy')
-    const [month, year] = header.split(' ')
+  function renderCustomHeader(date?: XDate) {
+    const header = date?.toString('MMMM yyyy')
+    const [month, year] = header ? header.split(' ') : ['', '']
 
     return (
       <View style={styles.header}>
@@ -39,55 +43,12 @@ export const HomePage: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.headerContainer}></View>
       <CalendarList
-        // current={INITIAL_DATE}
-        // style={styles.calendar}
-        // theme={theme}
-        // onDayPress={onDayPress}
-        // onDayLongPress={onDayLongPress}
-        // markingType={markingType}
-        // markedDates={disableAllTouchEventsForInactiveDays ? inactiveMarks : markingForType()}
-        // minDate={minAndMax ? INITIAL_DATE : undefined}
-        // maxDate={minAndMax ? getDate(21) : undefined}
-        // allowSelectionOutOfRange={allowSelectionOutOfRange}
-        // firstDay={firstDay}
-        // enableSwipeMonths={enableSwipeMonths}
-        // disableMonthChange={disableMonthChange}
-        // showWeekNumbers={showWeekNumbers}
-        // showSixWeeks={showSixWeeks}
-        // hideExtraDays={hideExtraDays}
+        style={styles.calendar}
         hideDayNames
-        // hideArrows={hideArrows}
-        // disabledByDefault={disabledByDefault}
-        // disableAllTouchEventsForDisabledDays={disableAllTouchEventsForDisabledDays}
-        // disableAllTouchEventsForInactiveDays={disableAllTouchEventsForInactiveDays}
-        // displayLoadingIndicator={displayLoadingIndicator}
-        // disabledDaysIndexes={disabledDaysIndexes ? [0, 6] : undefined}
         dayComponent={CustomDay}
-        // customHeader={<customHeader ? CustomHeader : undefined>}
         renderHeader={renderCustomHeader}
-        // customHeaderTitle={customHeaderTitle ? CustomHeaderTitle : undefined}
-        // onPressArrowLeft={customHeaderTitle ? onPressArrowLeft : undefined}
-        // onPressArrowRight={customHeaderTitle ? onPressArrowRight : undefined}
-        // renderArrow={renderArrow ? _renderArrow : undefined}
-        // disableArrowLeft={disableArrowLeft}
-        // disableArrowRight={disableArrowRight}
-        //     pastScrollRange: PropTypes.number,
-        // futureScrollRange: PropTypes.number,
-        // calendarWidth: PropTypes.number,
-        // calendarHeight: PropTypes.number,
-        // calendarStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
-        // staticHeader: PropTypes.bool,
-        // showScrollIndicator: PropTypes.bool,
-        // animateScroll: PropTypes.bool,
-        // scrollEnabled: PropTypes.bool,
-        // scrollsToTop: PropTypes.bool,
-        // pagingEnabled: PropTypes.bool,
-        // horizontal: PropTypes.bool,
-        // keyboardShouldPersistTaps: PropTypes.oneOf(['never', 'always', 'handled']),
-        // keyExtractor: PropTypes.func,
-        // onEndReachedThreshold: PropTypes.number,
-        // onEndReached: PropTypes.func,
-        // nestedScrollEnabled: PropTypes.bool
+        pastScrollRange={RANGE}
+        futureScrollRange={RANGE}
       />
     </View>
   )
@@ -134,7 +95,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     justifyContent: 'space-between',
-    marginTop: 10,
+    paddingTop: 60,
     marginBottom: 10
+  },
+  calendar: {
+    paddingVertical: 150
   }
 })

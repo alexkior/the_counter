@@ -33,8 +33,7 @@ export const HomePage: React.FC = () => {
 
     return (
       <View style={styles.header}>
-        <Text>{`${month}`}</Text>
-        <Text>{year}</Text>
+        <Text style={styles.headerText}>{`${month} ${year}`}</Text>
       </View>
     )
   }
@@ -92,11 +91,18 @@ const styles = StyleSheet.create({
     height: 60
   },
   header: {
-    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: 'gray',
+    flexDirection: 'column',
     width: '100%',
-    justifyContent: 'space-between',
-    paddingTop: 60,
-    marginBottom: 10
+    justifyContent: 'flex-start',
+    paddingTop: 20,
+    paddingBottom: 20,
+  },
+  headerText: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: 'gray'
   },
   calendar: {
     paddingVertical: 150

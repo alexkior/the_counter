@@ -1,14 +1,35 @@
-import { StyleSheet, View, Text } from 'react-native'
+import { useState } from 'react'
+import { StyleSheet, View, Text, Pressable } from 'react-native'
 import { CalendarList, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
-import Entypo from '@expo/vector-icons/Entypo';
+
+import Entypo from '@expo/vector-icons/Entypo'
 
 export const HomePage: React.FC = () => {
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
+    const dateString = date?.dateString
+    const [isClicked, setIsClicked] = useState(false)
     return (
-      <View style={styles.customDay}>
+      <Pressable style={styles.customDay} onPress={() => setIsClicked(!isClicked)}>
         <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
-        <Entypo name="drink" size={24} color="red" />
+        <Entypo
+          name="drink"
+          size={24}
+          color={dateString && dateString > new Date().toISOString().split('T')[0] ? 'gray' : isClicked ? 'red' : 'green'}
+        />
+      </Pressable>
+    )
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function renderCustomHeader(date: any) {
+    const header = date.toString('MMMM yyyy')
+    const [month, year] = header.split(' ')
+
+    return (
+      <View style={styles.header}>
+        <Text>{`${month}`}</Text>
+        <Text>{year}</Text>
       </View>
     )
   }
@@ -42,6 +63,7 @@ export const HomePage: React.FC = () => {
         // disabledDaysIndexes={disabledDaysIndexes ? [0, 6] : undefined}
         dayComponent={CustomDay}
         // customHeader={<customHeader ? CustomHeader : undefined>}
+        renderHeader={renderCustomHeader}
         // customHeaderTitle={customHeaderTitle ? CustomHeaderTitle : undefined}
         // onPressArrowLeft={customHeaderTitle ? onPressArrowLeft : undefined}
         // onPressArrowRight={customHeaderTitle ? onPressArrowRight : undefined}
@@ -105,6 +127,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingBottom: 10,
-    height: 60,
+    height: 60
+  },
+  header: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginBottom: 10
   }
 })

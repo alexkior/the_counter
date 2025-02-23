@@ -1,17 +1,17 @@
 import { useState } from 'react'
-import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions } from 'react-native'
+import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions, Button } from 'react-native'
 import { CalendarList, Calendar, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import XDate from 'xdate'
 
-import Entypo from '@expo/vector-icons/Entypo'
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 export const HomePage: React.FC = () => {
   const RANGE = 12
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const year = new Date().getFullYear()
-  const some = true
+  const [isYearView, setIsYearView] = useState(false)
   const { width } = Dimensions.get('window')
 
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
@@ -22,9 +22,9 @@ export const HomePage: React.FC = () => {
     return (
       <Pressable style={styles.customDay} onPress={() => setIsClicked(!isClicked)}>
         <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
-        <Entypo
-          name="drink"
-          size={18}
+        <FontAwesome5
+          name="wine-glass-alt"
+          size={16}
           color={
             isDateOlderThanToday ? '#B5B4BC' : isClicked ? (!isDateOlderThanToday ? '#FF0000' : '#B5B4BC') : '#3CB58A'
           }
@@ -46,8 +46,14 @@ export const HomePage: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}></View>
-      {some ? (
+      <View style={styles.headerContainer}>
+        {isYearView ? (
+          <Button color={'#3CB58A'} title="Month" onPress={() => setIsYearView(false)} />
+        ) : (
+          <Button color={'#3CB58A'} title="Year" onPress={() => setIsYearView(true)} />
+        )}
+      </View>
+      {isYearView ? (
         <ScrollView style={{ flex: 1, paddingTop: 120 }}>
           <View
             style={{

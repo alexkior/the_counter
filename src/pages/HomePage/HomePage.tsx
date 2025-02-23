@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   disabledText: {},
   defaultText: {
-    fontSize: 13,
+    fontSize: 14,
     color: 'gray',
     fontWeight: 'bold'
   },

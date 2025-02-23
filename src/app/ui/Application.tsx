@@ -1,9 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { RouteList } from '../../shared'
 import { Pages } from '../../pages'
-
+import { RouteList } from '../../shared'
 
 const Stack = createStackNavigator<RouteList>()
 

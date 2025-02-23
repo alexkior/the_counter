@@ -2,6 +2,8 @@
     "data": [
         {
             "iconName": "sun",
+            "color": "red",
+            "isPositive": true,
             "days": [ 
                 {
                 "year": 2025,

@@ -34,6 +34,16 @@ export const HomePage: React.FC = () => {
     )
   }
 
+  const CustomYearDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
+    console.log(state)
+
+    return (
+      <View style={styles.customYearDay}>
+        <Text style={styles.customYearDayText}>{date?.day}</Text>
+      </View>
+    )
+  }
+
   function renderCustomHeader(date?: XDate) {
     const header = date?.toString('MMMM yyyy')
     const [month, year] = header ? header.split(' ') : ['', '']
@@ -41,6 +51,17 @@ export const HomePage: React.FC = () => {
     return (
       <View style={styles.header}>
         <Text style={styles.headerText}>{`${month} ${year}`}</Text>
+      </View>
+    )
+  }
+
+  function renderCustomYearHeader(date?: XDate) {
+    const header = date?.toString('MMMM yyyy')
+    const [month] = header ? header.split(' ') : ['', '']
+
+    return (
+      <View style={styles.yearMonthHeader}>
+        <Text style={styles.yearMonthHeaderText}>{`${month}`}</Text>
       </View>
     )
   }
@@ -58,7 +79,7 @@ export const HomePage: React.FC = () => {
         />
       </View>
       {isYearView ? (
-        <ScrollView style={{ flex: 1, paddingTop: 120 }}>
+        <ScrollView style={{ flex: 1, paddingVertical: 120 }}>
           <View
             style={{
               flexDirection: 'row',
@@ -82,11 +103,10 @@ export const HomePage: React.FC = () => {
                     hideArrows
                     disableMonthChange
                     hideExtraDays
+                    renderHeader={renderCustomYearHeader}
+                    dayComponent={CustomYearDay}
+                    height={100}
                     current={`${year}-${monthStr}-01`}
-                    style={{
-                      borderWidth: 1,
-                      borderColor: '#eee'
-                    }}
                   />
                 </View>
               )
@@ -111,7 +131,7 @@ export const HomePage: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -159,7 +179,27 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000000'
   },
+  yearMonthHeader: {
+    flexDirection: 'column',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 10
+  },
+  yearMonthHeaderText: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#000000'
+  },
   calendar: {
     paddingVertical: 150
+  },
+  customYearDay: {
+    height: 8
+  },
+  customYearDayText: {
+    fontSize: 8,
+    fontWeight: 'bold',
+    color: '#000000'
   }
 })

@@ -1,19 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { StyleSheet, View } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Application } from './ui'
-import { StyleSheet, View } from 'react-native'
 
 export function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Application />
-        <View
-          style={styles.bottomContainer}
-          >
-          
-        </View>
+        <View style={styles.bottomContainer}></View>
       </NavigationContainer>
     </SafeAreaProvider>
   )

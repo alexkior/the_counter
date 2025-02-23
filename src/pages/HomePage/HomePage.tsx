@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { StyleSheet, View, Text, Pressable } from 'react-native'
-import { CalendarList, DateData } from 'react-native-calendars'
+import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions } from 'react-native'
+import { CalendarList, Calendar, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import XDate from 'xdate'
@@ -9,6 +9,10 @@ import Entypo from '@expo/vector-icons/Entypo'
 
 export const HomePage: React.FC = () => {
   const RANGE = 12
+  const months = Array.from({ length: 12 }, (_, i) => i + 1)
+  const year = new Date().getFullYear()
+  const some = true
+  const { width } = Dimensions.get('window')
 
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
     const dateString = date?.dateString
@@ -20,8 +24,10 @@ export const HomePage: React.FC = () => {
         <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
         <Entypo
           name="drink"
-          size={24}
-          color={isDateOlderThanToday ? 'gray' : isClicked ? (!isDateOlderThanToday ? 'red' : 'gray') : 'green'}
+          size={18}
+          color={
+            isDateOlderThanToday ? '#B5B4BC' : isClicked ? (!isDateOlderThanToday ? '#FF0000' : '#B5B4BC') : '#3CB58A'
+          }
         />
       </Pressable>
     )
@@ -41,14 +47,53 @@ export const HomePage: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}></View>
-      <CalendarList
-        style={styles.calendar}
-        hideDayNames
-        dayComponent={CustomDay}
-        renderHeader={renderCustomHeader}
-        pastScrollRange={RANGE}
-        futureScrollRange={RANGE}
-      />
+      {some ? (
+        <ScrollView style={{ flex: 1, paddingTop: 120 }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
+              paddingHorizontal: 5
+            }}
+          >
+            {months.map((month) => {
+              const monthStr = month < 10 ? `0${month}` : month.toString()
+              return (
+                <View
+                  key={month}
+                  style={{
+                    width: (width - 20) / 3,
+                    marginBottom: 20
+                  }}
+                >
+                  <Calendar
+                    hideDayNames
+                    hideArrows
+                    disableMonthChange
+                    hideExtraDays
+                    current={`${year}-${monthStr}-01`}
+                    style={{
+                      borderWidth: 1,
+                      borderColor: '#eee'
+                    }}
+                  />
+                </View>
+              )
+            })}
+          </View>
+        </ScrollView>
+      ) : (
+        <CalendarList
+          calendarHeight={400}
+          style={styles.calendar}
+          hideDayNames
+          dayComponent={CustomDay}
+          renderHeader={renderCustomHeader}
+          pastScrollRange={RANGE}
+          futureScrollRange={RANGE}
+        />
+      )}
     </View>
   )
 }
@@ -79,7 +124,7 @@ const styles = StyleSheet.create({
   disabledText: {},
   defaultText: {
     fontSize: 14,
-    color: 'gray',
+    color: '#000000',
     fontWeight: 'bold'
   },
   customDay: {
@@ -87,22 +132,21 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: 10,
-    height: 60
+    height: 40
   },
   header: {
     borderTopWidth: 1,
-    borderTopColor: 'gray',
+    borderTopColor: '#B5B4BC',
     flexDirection: 'column',
     width: '100%',
     justifyContent: 'flex-start',
     paddingTop: 20,
-    paddingBottom: 20,
+    paddingBottom: 20
   },
   headerText: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: 'gray'
+    color: '#000000'
   },
   calendar: {
     paddingVertical: 150

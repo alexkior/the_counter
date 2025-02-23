@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions, Button } from 'react-native'
+import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions, Switch } from 'react-native'
 import { CalendarList, Calendar, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
 
@@ -12,6 +12,7 @@ export const HomePage: React.FC = () => {
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const year = new Date().getFullYear()
   const [isYearView, setIsYearView] = useState(false)
+  const toggleSwitch = () => setIsYearView((previousState) => !previousState)
   const { width } = Dimensions.get('window')
 
   const CustomDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
@@ -47,11 +48,14 @@ export const HomePage: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        {isYearView ? (
-          <Button color={'#3CB58A'} title="Month" onPress={() => setIsYearView(false)} />
-        ) : (
-          <Button color={'#3CB58A'} title="Year" onPress={() => setIsYearView(true)} />
-        )}
+        <Switch
+          trackColor={{ false: '#fff', true: '#fff' }}
+          thumbColor={isYearView ? '#3CB58A' : '#3CB58A'}
+          ios_backgroundColor="#fff"
+          onValueChange={toggleSwitch}
+          value={isYearView}
+          style={{ boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)' }}
+        />
       </View>
       {isYearView ? (
         <ScrollView style={{ flex: 1, paddingTop: 120 }}>
@@ -118,8 +122,9 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#fff',
     width: '100%',
     height: 100,

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { StyleSheet, View, Text, Pressable, ScrollView, Dimensions, Switch } from 'react-native'
 import { CalendarList, Calendar, DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
@@ -7,7 +7,7 @@ import XDate from 'xdate'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-export const CalendarPage: React.FC = () => {
+export const CalendarPage: React.FC = memo(() => {
   const RANGE = 12
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const year = new Date().getFullYear()
@@ -97,6 +97,7 @@ export const CalendarPage: React.FC = () => {
                   }}
                 >
                   <Calendar
+                    displayLoadingIndicator
                     hideDayNames
                     hideArrows
                     disableMonthChange
@@ -124,7 +125,7 @@ export const CalendarPage: React.FC = () => {
       )}
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {

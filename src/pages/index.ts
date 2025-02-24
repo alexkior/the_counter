@@ -1,9 +1,9 @@
-import { HomePage } from './HomePage'
+import { CalendarPage } from './CalendarPage'
 import { SettingsPage } from './SettingsPage'
 import { StatsPage } from './StatsPage'
 
 export const Pages = {
-  HomePage,
+  CalendarPage,
   StatsPage,
   SettingsPage
 }

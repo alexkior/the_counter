@@ -1,7 +1,7 @@
 import { NavigationProp } from '@react-navigation/native'
 
 export type RouteList = {
-  HomePage: undefined
+  CalendarPage: undefined
   StatsPage: undefined
   SettingsPage: undefined
 }

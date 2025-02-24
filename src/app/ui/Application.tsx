@@ -13,19 +13,20 @@ export const Application: React.FC = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator
-        initialRouteName="HomePage"
+        initialRouteName="CalendarPage"
         screenOptions={{
           headerShown: false
         }}
       >
-        <Stack.Screen name="HomePage" component={Pages.HomePage} />
+        <Stack.Screen name="CalendarPage" component={Pages.CalendarPage} />
         <Stack.Screen name="StatsPage" component={Pages.StatsPage} />
+        <Stack.Screen name="SettingsPage" component={Pages.SettingsPage} />
       </Stack.Navigator>
       <View style={styles.bottomContainer}>
         <Button
           title="Home"
           onPress={() => {
-            navigation.navigate('HomePage')
+            navigation.navigate('CalendarPage')
           }}
         />
         <Button

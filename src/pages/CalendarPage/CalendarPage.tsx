@@ -7,7 +7,7 @@ import XDate from 'xdate'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-export const HomePage: React.FC = () => {
+export const CalendarPage: React.FC = () => {
   const RANGE = 12
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const year = new Date().getFullYear()

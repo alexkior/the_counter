@@ -34,9 +34,7 @@ export const HomePage: React.FC = () => {
     )
   }
 
-  const CustomYearDay: React.FC<DayProps & { date?: DateData }> = ({ date, state }) => {
-    console.log(state)
-
+  const CustomYearDay: React.FC<DayProps & { date?: DateData }> = ({ date }) => {
     return (
       <View style={styles.customYearDay}>
         <Text style={styles.customYearDayText}>{date?.day}</Text>
@@ -195,6 +193,8 @@ const styles = StyleSheet.create({
     paddingVertical: 150
   },
   customYearDay: {
+    margin: 0,
+    padding: 0,
     height: 8
   },
   customYearDayText: {

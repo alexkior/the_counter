@@ -5,13 +5,25 @@ import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
+import counterStore from '../../../../../../app/providers/StoreProvider/StoreProvider'
+
 export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state }) => {
   const dateString = date?.dateString
   const [isClicked, setIsClicked] = useState(false)
   const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
 
+  const onDayPress = () => {
+    if (isClicked) {
+      counterStore.removeDay(dateString)
+    } else {
+      counterStore.addDay(dateString)
+    }
+    setIsClicked(!isClicked)
+    console.log(counterStore.getDays())
+  }
+
   return (
-    <Pressable style={styles.day} onPress={() => setIsClicked(!isClicked)}>
+    <Pressable style={styles.day} onPress={onDayPress}>
       <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
       <FontAwesome5
         name="wine-glass-alt"

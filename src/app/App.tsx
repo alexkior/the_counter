@@ -1,14 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { observer } from 'mobx-react-lite'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { Application } from './ui'
+import { Navigation } from './navigation'
 
-export function App() {
+export const App = observer(() => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Application />
+        <Navigation />
       </NavigationContainer>
     </SafeAreaProvider>
   )
-}
+})

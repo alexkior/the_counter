@@ -1,12 +1,12 @@
 import { createStackNavigator } from '@react-navigation/stack'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Pages } from '../../pages'
-import { BottomMenu, RouteList } from '../../shared'
+import { Pages } from '../../../pages'
+import { BottomMenu, RouteList } from '../../../shared'
 
 const Stack = createStackNavigator<RouteList>()
 
-export const Application: React.FC = () => {
+export const Navigation: React.FC = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Stack.Navigator

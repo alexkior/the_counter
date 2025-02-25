@@ -1,4 +1,4 @@
-import { memo, useState } from 'react'
+import { memo } from 'react'
 import { Pressable, Text, StyleSheet } from 'react-native'
 import { DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
@@ -9,18 +9,18 @@ import counterStore from '../../../../../../app/providers/StoreProvider/StorePro
 
 export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state }) => {
   const dateString = date?.dateString
-  const [isClicked, setIsClicked] = useState(false)
+  // TODO: think about using this
+  // const [isClicked, setIsClicked] = useState(false)
   const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
 
   const theDateIsClicked = dateString ? counterStore.getDays().includes(dateString) : false
 
   const onDayPress = () => {
-    if (isClicked) {
+    if (theDateIsClicked) {
       counterStore.removeDay(dateString)
     } else {
       counterStore.addDay(dateString)
     }
-    setIsClicked(!isClicked)
     console.log(counterStore.getDays())
   }
 
@@ -33,7 +33,7 @@ export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state
         color={
           isDateOlderThanToday
             ? '#B5B4BC'
-            : isClicked || theDateIsClicked
+            : theDateIsClicked
               ? !isDateOlderThanToday
                 ? '#FF0000'
                 : '#B5B4BC'

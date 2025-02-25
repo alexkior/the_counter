@@ -18,6 +18,10 @@ export const BottomMenu: React.FC = () => {
     }
   }, [activePage, currentRouteName])
 
+  useEffect(() => {
+    setActivePage('CalendarPage')
+  }, [])
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.buttonContainer}>

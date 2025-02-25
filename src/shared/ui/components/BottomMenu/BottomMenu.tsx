@@ -21,10 +21,21 @@ export const BottomMenu: React.FC = () => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.buttonContainer}>
-        <MenuButton onPress={() => navigation.navigate('CalendarPage')} isActive={activePage} />
-        <MenuButton onPress={() => navigation.navigate('StatsPage')} isActive={activePage} />
-
-        <MenuButton onPress={() => navigation.navigate('SettingsPage')} isActive={activePage} />
+        <MenuButton
+          onPress={() => navigation.navigate('CalendarPage')}
+          isActive={activePage === 'CalendarPage'}
+          iconName="calendar"
+        />
+        <MenuButton
+          onPress={() => navigation.navigate('StatsPage')}
+          isActive={activePage === 'StatsPage'}
+          iconName="stats-chart"
+        />
+        <MenuButton
+          onPress={() => navigation.navigate('SettingsPage')}
+          isActive={activePage === 'SettingsPage'}
+          iconName="settings-sharp"
+        />
       </View>
     </View>
   )

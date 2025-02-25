@@ -12,6 +12,8 @@ export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state
   const [isClicked, setIsClicked] = useState(false)
   const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
 
+  const theDateIsClicked = dateString ? counterStore.getDays().includes(dateString) : false
+
   const onDayPress = () => {
     if (isClicked) {
       counterStore.removeDay(dateString)
@@ -29,7 +31,13 @@ export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state
         name="wine-glass-alt"
         size={16}
         color={
-          isDateOlderThanToday ? '#B5B4BC' : isClicked ? (!isDateOlderThanToday ? '#FF0000' : '#B5B4BC') : '#3CB58A'
+          isDateOlderThanToday
+            ? '#B5B4BC'
+            : isClicked || theDateIsClicked
+              ? !isDateOlderThanToday
+                ? '#FF0000'
+                : '#B5B4BC'
+              : '#3CB58A'
         }
       />
     </Pressable>

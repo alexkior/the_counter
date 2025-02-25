@@ -16,8 +16,10 @@ class CounterStore {
   }
 
   addDay(day: string | undefined) {
-    if (day) {
+    if (day && !this.days.includes(day)) {
       this.days.push(day)
+    } else {
+      this.removeDay(day)
     }
   }
 

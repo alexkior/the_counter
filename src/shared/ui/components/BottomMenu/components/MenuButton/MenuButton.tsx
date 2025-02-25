@@ -4,15 +4,16 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 
 interface BottomMenuProps {
   onPress: () => void
-  isActive: string
+  isActive: boolean
+  iconName: 'calendar' | 'stats-chart' | 'settings-sharp'
 }
 
-export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive }) => {
+export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName }) => {
   return (
     <Pressable style={styles.button} onPress={onPress}>
-      <Ionicons name="calendar" size={32} color={isActive !== 'CalendarPage' ? '#B5B4BC' : '#FF0000'} />
+      <Ionicons name={iconName} size={32} color={isActive ? '#FF0000' : '#B5B4BC'} />
 
-      <Text style={isActive === 'CalendarPage' ? styles.activeButtonText : styles.buttonText}>Calendar</Text>
+      <Text style={isActive ? styles.activeButtonText : styles.buttonText}>Calendar</Text>
     </Pressable>
   )
 }

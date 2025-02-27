@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import { memo } from 'react'
 import { Pressable, Text, StyleSheet } from 'react-native'
 import { DateData } from 'react-native-calendars'
@@ -7,42 +8,38 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 import counterStore from '../../../../../../app/providers/StoreProvider/StoreProvider'
 
-export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date, state }) => {
-  const dateString = date?.dateString
-  // TODO: think about using this
-  // const [isClicked, setIsClicked] = useState(false)
-  const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
+export const Day: React.FC<DayProps & { date?: DateData }> = memo(
+  observer(({ date, state }) => {
+    const dateString = date?.dateString
+    const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
 
-  const theDateIsClicked = dateString ? counterStore.getDays().includes(dateString) : false
+    const theDateIsClicked = dateString ? counterStore.getDays().includes(dateString) : false
 
-  const onDayPress = () => {
-    if (theDateIsClicked) {
-      counterStore.removeDay(dateString)
-    } else {
-      counterStore.addDay(dateString)
+    const iconColour = isDateOlderThanToday
+      ? '#B5B4BC'
+      : theDateIsClicked
+        ? !isDateOlderThanToday
+          ? '#FF0000'
+          : '#B5B4BC'
+        : '#3CB58A'
+
+    const onDayPress = () => {
+      if (theDateIsClicked) {
+        counterStore.removeDay(dateString)
+      } else {
+        counterStore.addDay(dateString)
+      }
+      console.log(counterStore.getDays())
     }
-    console.log(counterStore.getDays())
-  }
 
-  return (
-    <Pressable style={styles.day} onPress={onDayPress}>
-      <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
-      <FontAwesome5
-        name="wine-glass-alt"
-        size={16}
-        color={
-          isDateOlderThanToday
-            ? '#B5B4BC'
-            : theDateIsClicked
-              ? !isDateOlderThanToday
-                ? '#FF0000'
-                : '#B5B4BC'
-              : '#3CB58A'
-        }
-      />
-    </Pressable>
-  )
-})
+    return (
+      <Pressable style={styles.day} onPress={onDayPress}>
+        <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
+        <FontAwesome5 name="wine-glass-alt" size={16} color={iconColour} />
+      </Pressable>
+    )
+  })
+)
 
 const styles = StyleSheet.create({
   disabledText: {},

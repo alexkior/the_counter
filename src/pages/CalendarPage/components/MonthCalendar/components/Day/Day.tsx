@@ -6,14 +6,14 @@ import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import counterStore from '../../../../../../app/providers/StoreProvider/StoreProvider'
+import { daysStore } from '../../../../../../app'
 
 export const Day: React.FC<DayProps & { date?: DateData }> = memo(
   observer(({ date, state }) => {
     const dateString = date?.dateString
     const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
 
-    const theDateIsClicked = dateString ? counterStore.getDays().includes(dateString) : false
+    const theDateIsClicked = dateString ? daysStore.getDays().includes(dateString) : false
 
     const iconColour = isDateOlderThanToday
       ? '#B5B4BC'
@@ -25,11 +25,11 @@ export const Day: React.FC<DayProps & { date?: DateData }> = memo(
 
     const onDayPress = () => {
       if (theDateIsClicked) {
-        counterStore.removeDay(dateString)
+        daysStore.removeDay(dateString)
       } else {
-        counterStore.addDay(dateString)
+        daysStore.addDay(dateString)
       }
-      console.log(counterStore.getDays())
+      console.log(daysStore.getDays())
     }
 
     return (

@@ -1,6 +1,6 @@
 import { makeObservable, observable, action } from 'mobx'
 
-class CounterStore {
+class DaysStore {
   days: string[] = []
 
   constructor() {
@@ -32,5 +32,4 @@ class CounterStore {
   }
 }
 
-const counterStore = new CounterStore()
-export default counterStore
+export const daysStore = new DaysStore()

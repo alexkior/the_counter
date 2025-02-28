@@ -1,16 +1,28 @@
+import { observer } from 'mobx-react-lite'
 import { View, StyleSheet, Text } from 'react-native'
 
-export const StatsPage: React.FC = () => {
+import { daysStore } from '../../app'
+import { Gauge } from './components'
+
+export const StatsPage: React.FC = observer(() => {
+  const startDate = daysStore.getDays()[0]
+  const today = new Date().toISOString().split('T')[0]
+  const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) : 0
+  const selectedDates = daysStore.getDays().length
+  const percentage = (daysPassed / 100) * selectedDates * 100
+  console.log(percentage)
+
   return (
     <View style={styles.container}>
       <View style={styles.pageHeadingContainer}>
         <Text style={styles.pageHeadingText}>Statistics</Text>
       </View>
+      <Gauge value={percentage} />
       <View style={styles.box}></View>
       <View style={styles.pageHeader}></View>
     </View>
   )
-}
+})
 
 const styles = StyleSheet.create({
   container: {

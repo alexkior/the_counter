@@ -18,7 +18,8 @@ export const useStyles = () => {
         flexDirection: 'column',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: 40
+        height: 40,
+        width: '100%'
       }
     })
   }

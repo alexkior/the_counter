@@ -29,16 +29,19 @@ export const BottomMenu: React.FC = () => {
           onPress={() => navigation.navigate('CalendarPage')}
           isActive={activePage === 'CalendarPage'}
           iconName="calendar"
+          title="Calendar"
         />
         <MenuButton
           onPress={() => navigation.navigate('StatsPage')}
           isActive={activePage === 'StatsPage'}
           iconName="stats-chart"
+          title="Statistics"
         />
         <MenuButton
           onPress={() => navigation.navigate('SettingsPage')}
           isActive={activePage === 'SettingsPage'}
           iconName="settings-sharp"
+          title="Settings"
         />
       </View>
     </View>

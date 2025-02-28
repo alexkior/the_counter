@@ -6,14 +6,15 @@ interface BottomMenuProps {
   onPress: () => void
   isActive: boolean
   iconName: 'calendar' | 'stats-chart' | 'settings-sharp'
+  title: string
 }
 
-export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName }) => {
+export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName, title }) => {
   return (
     <Pressable style={styles.button} onPress={onPress}>
       <Ionicons name={iconName} size={32} color={isActive ? '#FF0000' : '#B5B4BC'} />
 
-      <Text style={isActive ? styles.activeButtonText : styles.buttonText}>Calendar</Text>
+      <Text style={isActive ? styles.activeButtonText : styles.buttonText}>{title}</Text>
     </Pressable>
   )
 }

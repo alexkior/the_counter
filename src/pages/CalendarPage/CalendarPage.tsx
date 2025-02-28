@@ -1,5 +1,5 @@
 import { memo, useState } from 'react'
-import { StyleSheet, View, Switch } from 'react-native'
+import { StyleSheet, View, Switch, Text, Dimensions } from 'react-native'
 
 import { MonthCalendar } from './components'
 import { YearCalendar } from './components/YearCalendar'
@@ -7,23 +7,51 @@ import { YearCalendar } from './components/YearCalendar'
 export const CalendarPage: React.FC = memo(() => {
   const [isYearView, setIsYearView] = useState(false)
   const toggleSwitch = () => setIsYearView((previousState) => !previousState)
-
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Switch
-          trackColor={{ false: '#fff', true: '#fff' }}
-          thumbColor={isYearView ? '#3CB58A' : '#3CB58A'}
-          ios_backgroundColor="#fff"
-          onValueChange={toggleSwitch}
-          value={isYearView}
-          style={{ boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)' }}
-        />
+        <View style={styles.switchContainer}>
+          <Switch
+            trackColor={{ false: '#fff', true: '#fff' }}
+            thumbColor={isYearView ? '#3CB58A' : '#3CB58A'}
+            ios_backgroundColor="#fff"
+            onValueChange={toggleSwitch}
+            value={isYearView}
+            style={styles.switch}
+          />
+        </View>
+        {!isYearView && (
+          <View style={styles.weekDaysContainer}>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Mon</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Tue</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Wed</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Thu</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Fri</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Sat</Text>
+            </View>
+            <View style={styles.weekDay}>
+              <Text style={styles.weekDayText}>Sun</Text>
+            </View>
+          </View>
+        )}
       </View>
       {isYearView ? <YearCalendar /> : <MonthCalendar />}
     </View>
   )
 })
+
+const { width } = Dimensions.get('window')
 
 const styles = StyleSheet.create({
   container: {
@@ -48,5 +76,29 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     boxShadow: '0px 4px 3px rgba(23, 23, 23, 0.1)'
-  }
+  },
+  switchContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    padding: 16
+  },
+  weekDaysContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%'
+  },
+  weekDay: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: width / 7 - 4
+  },
+  weekDayText: { fontSize: 12 },
+  switch: { boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)' }
 })

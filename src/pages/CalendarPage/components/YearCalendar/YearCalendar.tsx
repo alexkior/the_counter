@@ -1,13 +1,15 @@
 import { memo } from 'react'
-import { StyleSheet, View, ScrollView, Dimensions } from 'react-native'
+import { View, ScrollView, Dimensions } from 'react-native'
 import { Calendar } from 'react-native-calendars'
 
 import { Day, Header } from './components'
+import { useStyles } from './useStyles'
 
 export const YearCalendar: React.FC = memo(() => {
   const months = Array.from({ length: 12 }, (_, i) => i + 1)
   const year = new Date().getFullYear()
   const { width } = Dimensions.get('window')
+  const { styles } = useStyles()
 
   return (
     <ScrollView style={{ flex: 1, paddingVertical: 120 }}>
@@ -39,13 +41,4 @@ export const YearCalendar: React.FC = memo(() => {
       </View>
     </ScrollView>
   )
-})
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    paddingHorizontal: 5
-  }
 })

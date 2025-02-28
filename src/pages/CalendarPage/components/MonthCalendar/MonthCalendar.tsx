@@ -1,11 +1,12 @@
 import { memo } from 'react'
-import { StyleSheet } from 'react-native'
 import { CalendarList } from 'react-native-calendars'
 
 import { Day, Header } from './components'
+import { useStyles } from './useStyles'
 
 export const MonthCalendar: React.FC = memo(() => {
   const RANGE = 12
+  const { styles } = useStyles()
 
   return (
     <CalendarList
@@ -18,10 +19,4 @@ export const MonthCalendar: React.FC = memo(() => {
       futureScrollRange={RANGE}
     />
   )
-})
-
-const styles = StyleSheet.create({
-  calendar: {
-    paddingVertical: 150
-  }
 })

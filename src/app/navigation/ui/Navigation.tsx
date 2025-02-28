@@ -12,7 +12,10 @@ export const Navigation: React.FC = () => {
       <Stack.Navigator
         initialRouteName="CalendarPage"
         screenOptions={{
-          headerShown: false
+          headerShown: false,
+          presentation: 'modal',
+          animationTypeForReplace: 'push',
+          animation: 'none'
         }}
       >
         <Stack.Screen name="CalendarPage" component={Pages.CalendarPage} />

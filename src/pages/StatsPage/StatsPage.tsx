@@ -7,10 +7,14 @@ import { Gauge } from './components'
 export const StatsPage: React.FC = observer(() => {
   const startDate = daysStore.getDays()[0]
   const today = new Date().toISOString().split('T')[0]
-  const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) : 0
+  const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) + 1 : 0
   const selectedDates = daysStore.getDays().length
-  const percentage = (daysPassed / 100) * selectedDates * 100
-  console.log(percentage)
+  const percentage = selectedDates
+    ? selectedDates >= daysPassed
+      ? 100
+      : Math.floor((selectedDates / daysPassed) * 100)
+    : 0
+  console.log(percentage, daysPassed, selectedDates)
 
   return (
     <View style={styles.container}>

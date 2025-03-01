@@ -26,6 +26,10 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
       : theme.colors.green
 
   const onDayPress = () => {
+    if (isDateOlderThanToday) {
+      return
+    }
+
     if (theDateIsClicked) {
       daysStore.removeDay(dateString)
     } else {

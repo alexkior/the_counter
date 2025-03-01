@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '30%'
+    width: '33%'
   },
   buttonText: {
     marginTop: 5,

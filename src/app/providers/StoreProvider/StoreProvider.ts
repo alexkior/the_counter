@@ -12,7 +12,7 @@ class DaysStore {
   }
 
   getDays() {
-    return this.days
+    return this.days.slice().sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
   }
 
   addDay(day: string | undefined) {
@@ -24,11 +24,7 @@ class DaysStore {
   }
 
   removeDay(dayToRemove: string | undefined) {
-    this.days.map((day, index) => {
-      if (day === dayToRemove) {
-        this.days.splice(index, 1)
-      }
-    })
+    this.days = this.days.filter((day) => day !== dayToRemove)
   }
 }
 

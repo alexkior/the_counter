@@ -39,7 +39,7 @@ export const ProgressBar = ({ value = 75, color }: ProgressBarProps) => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    padding: 10,
+    padding: 4,
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',

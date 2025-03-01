@@ -2,6 +2,8 @@ import { observer } from 'mobx-react-lite'
 import { View, Text, Pressable, ScrollView } from 'react-native'
 import Toast from 'react-native-toast-message'
 
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+
 import { daysStore } from '../../app'
 import { useThemeContext } from '../../shared'
 import { Gauge, ProgressBar } from './components'
@@ -52,8 +54,26 @@ export const StatsPage: React.FC = observer(() => {
       </View>
       <Gauge value={percentage} />
       <View style={styles.box}>
-        <ProgressBar value={100 - percentage} color={theme.colors.green} />
-        <ProgressBar value={percentage} color={theme.colors.red} />
+        <View style={styles.progressBarWrapper}>
+          <View style={styles.progressBarHeading}>
+            <View style={styles.progressBarIconWrapper}>
+              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.green} />
+            </View>
+            <Text
+              style={styles.progressBarHeadingText}
+            >{`Without THING ${daysPassed - selectedDates} out of ${daysPassed} days`}</Text>
+          </View>
+          <ProgressBar value={100 - percentage} color={theme.colors.green} />
+        </View>
+        <View style={styles.progressBarWrapper}>
+          <View style={styles.progressBarHeading}>
+            <View style={styles.progressBarIconWrapper}>
+              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.red} />
+            </View>
+            <Text style={styles.progressBarHeadingText}>{`With THING ${selectedDates} out of ${daysPassed} days`}</Text>
+          </View>
+          <ProgressBar value={percentage} color={theme.colors.red} />
+        </View>
       </View>
       <View style={styles.box}></View>
       <View style={styles.box}></View>

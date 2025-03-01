@@ -40,7 +40,8 @@ export const useStyles = () => {
         width: '90%',
         minHeight: 100,
         borderRadius: 20,
-        boxShadow: '0px 16px 30px rgba(23, 23, 23, 0.15)'
+        boxShadow: '0px 16px 30px rgba(23, 23, 23, 0.15)',
+        paddingVertical: 10
       },
       rangeSelectContainer: {
         display: 'flex',
@@ -71,6 +72,36 @@ export const useStyles = () => {
         color: theme.colors.white,
         fontSize: 12,
         fontWeight: 'bold'
+      },
+      progressBarWrapper: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        paddingHorizontal: 10,
+        paddingBottom: 20
+      },
+      progressBarHeading: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        width: '100%',
+        padding: 20
+      },
+      progressBarIconWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        height: 20,
+        width: 20,
+        marginRight: 10
+      },
+      progressBarHeadingText: {
+        fontSize: 14,
+        fontWeight: 'medium'
       }
     })
   }

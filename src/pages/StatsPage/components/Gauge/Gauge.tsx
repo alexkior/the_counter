@@ -1,7 +1,7 @@
 import { View, StyleSheet, ColorValue, Text } from 'react-native'
 import Svg, { Path, Circle, Line } from 'react-native-svg'
 
-import { useThemeContext } from '../../../shared'
+import { useThemeContext } from '../../../../shared'
 
 export const Gauge = ({ value = 75 }) => {
   const { theme } = useThemeContext()

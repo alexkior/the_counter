@@ -3,6 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useMemo } from 'react'
 import { useColorScheme } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import Toast from 'react-native-toast-message'
 
 import { TheCounterTheme, ThemeContext } from '../shared'
 import { Navigation } from './navigation'
@@ -17,6 +18,7 @@ export const App = observer(() => {
       <ThemeContext.Provider value={themeContextValue}>
         <NavigationContainer>
           <Navigation />
+          <Toast />
         </NavigationContainer>
       </ThemeContext.Provider>
     </SafeAreaProvider>

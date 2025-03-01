@@ -12,7 +12,15 @@ export const YearCalendar: React.FC = memo(() => {
   const { styles } = useStyles()
 
   return (
-    <ScrollView style={{ flex: 1, paddingVertical: 120 }}>
+    <ScrollView
+      style={{
+        height: '100%',
+        paddingVertical: 120,
+        backgroundColor: 'red',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
       <View style={styles.container}>
         {months.map((month) => {
           const monthStr = month < 10 ? `0${month}` : month.toString()

@@ -44,7 +44,8 @@ export const useStyles = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
+        height: 30
       },
       weekDay: {
         display: 'flex',
@@ -54,7 +55,17 @@ export const useStyles = () => {
         width: width / 7 - 4
       },
       weekDayText: { fontSize: 12 },
-      switch: { boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)' }
+      switch: { 
+        boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)', 
+        height: 30,
+        width: 100,
+        borderRadius: 20,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: theme.colors.green
+      },
+      switchText: { color: theme.colors.white }
     })
   }
 }

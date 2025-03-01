@@ -1,28 +1,26 @@
-import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Pages } from '../../../pages'
 import { BottomMenu, RouteList } from '../../../shared'
 
-const Stack = createStackNavigator<RouteList>()
+const Tab = createBottomTabNavigator<RouteList>()
 
 export const Navigation: React.FC = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Stack.Navigator
+      <Tab.Navigator
         initialRouteName="CalendarPage"
         screenOptions={{
           headerShown: false,
-          presentation: 'modal',
-          animationTypeForReplace: 'push',
           animation: 'none'
         }}
+        tabBar={() => <BottomMenu />}
       >
-        <Stack.Screen name="CalendarPage" component={Pages.CalendarPage} />
-        <Stack.Screen name="StatsPage" component={Pages.StatsPage} />
-        <Stack.Screen name="SettingsPage" component={Pages.SettingsPage} />
-      </Stack.Navigator>
-      <BottomMenu />
+        <Tab.Screen name="CalendarPage" component={Pages.CalendarPage} />
+        <Tab.Screen name="StatsPage" component={Pages.StatsPage} />
+        <Tab.Screen name="SettingsPage" component={Pages.SettingsPage} />
+      </Tab.Navigator>
     </SafeAreaView>
   )
 }

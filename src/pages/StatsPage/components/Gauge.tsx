@@ -1,4 +1,4 @@
-import { View, StyleSheet, ColorValue } from 'react-native'
+import { View, StyleSheet, ColorValue, Text } from 'react-native'
 import Svg, { Path, Circle, Line } from 'react-native-svg'
 
 export const Gauge = ({ value = 75 }) => {
@@ -37,6 +37,13 @@ export const Gauge = ({ value = 75 }) => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.legend}>
+        <Text style={styles.legendTextOne}>Very rarely</Text>
+        <Text style={styles.legendTextTwo}>Rarely</Text>
+        <Text style={styles.legendTextThree}>Regularly</Text>
+        <Text style={styles.legendTextFour}>Often</Text>
+        <Text style={styles.legendTextFive}>Very often</Text>
+      </View>
       <Svg width={width} height={height}>
         {getArcPath(180, 210, '#1B5E20')}
         {getArcPath(220, 250, '#4CAF50')}
@@ -58,5 +65,52 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingBottom: 40
+  },
+  legend: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
+    marginTop: 20
+  },
+  legendTextOne: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlign: 'center',
+    width: 50,
+    top: 110,
+    color: '#1B5E20'
+  },
+  legendTextTwo: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlign: 'center',
+    width: 50,
+    top: 45,
+    color: '#4CAF50'
+  },
+  legendTextThree: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlign: 'center',
+    width: 120,
+    top: 20,
+    color: '#9e9e9e'
+  },
+  legendTextFour: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlign: 'center',
+    width: 50,
+    top: 45,
+    color: '#D32F2F'
+  },
+  legendTextFive: {
+    fontWeight: 'bold',
+    fontSize: 12,
+    textAlign: 'center',
+    width: 50,
+    top: 110,
+    color: '#B71C1C'
   }
 })

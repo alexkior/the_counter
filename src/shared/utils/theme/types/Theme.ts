@@ -5,6 +5,7 @@ export type Theme = {
     red: string
     green: string
     grey: string
+    lightGrey: string
   }
   text: {
     size: {

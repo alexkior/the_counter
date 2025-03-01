@@ -6,7 +6,8 @@ export const TheCounterTheme: Theme = {
     black: '#000',
     red: '#FF0000',
     green: '#3CB58A',
-    grey: '#B5B4BC'
+    grey: '#B5B4BC',
+    lightGrey: '#F0F0F0',
   },
   text: {
     size: {

@@ -41,7 +41,8 @@ export const useStyles = () => {
         minHeight: 100,
         borderRadius: 20,
         boxShadow: '0px 16px 30px rgba(23, 23, 23, 0.15)',
-        paddingVertical: 10
+        paddingVertical: 10,
+        marginBottom: 30
       },
       progressBarWrapper: {
         width: '100%',
@@ -72,6 +73,14 @@ export const useStyles = () => {
       progressBarHeadingText: {
         fontSize: 14,
         fontWeight: 'medium'
+      },
+      progressCircleWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '100%',
+        padding: 20
       }
     })
   }

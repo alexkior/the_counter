@@ -5,7 +5,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 import { daysStore } from '../../app'
 import { useThemeContext } from '../../shared'
-import { ButtonBar, Gauge, ProgressBar } from './components'
+import { ButtonBar, Gauge, ProgressBar, CircularProgress } from './components'
 import { useStyles } from './useStyles'
 
 export const StatsPage: React.FC = observer(() => {
@@ -51,7 +51,22 @@ export const StatsPage: React.FC = observer(() => {
           <ProgressBar value={percentage} color={theme.colors.red} />
         </View>
       </View>
-      <View style={styles.box}></View>
+      <View style={styles.box}>
+        <View style={styles.progressCircleWrapper}>
+          <CircularProgress value={percentage} color={theme.colors.red} />
+          <CircularProgress value={percentage} color={theme.colors.red} />
+
+          <CircularProgress value={percentage} color={theme.colors.red} />
+
+          <CircularProgress value={percentage} color={theme.colors.red} />
+
+          <CircularProgress value={percentage} color={theme.colors.red} />
+
+          <CircularProgress value={percentage} color={theme.colors.red} />
+
+          <CircularProgress value={percentage} color={theme.colors.red} />
+        </View>
+      </View>
       <View style={styles.box}></View>
       <View style={styles.box}></View>
 

@@ -87,6 +87,7 @@ export const StatsPage: React.FC = observer(() => {
               <CircularProgress
                 value={Math.floor((weekDaysPassed[index] / 100) * day[1] * 100)}
                 color={theme.colors.red}
+                weekDayIndex={parseInt(day[0])}
               />
             </View>
           ))}

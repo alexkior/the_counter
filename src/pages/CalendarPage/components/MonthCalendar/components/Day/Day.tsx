@@ -42,7 +42,7 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
 
   return (
     <Pressable style={styles.day} onPress={onDayPress}>
-      {today && <View style={styles.today}></View>}
+      {today && <View style={theDateIsClicked ? styles.todayClicked : styles.today}></View>}
       <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
       <FontAwesome5 name="wine-glass-alt" size={16} color={iconColour} />
     </Pressable>

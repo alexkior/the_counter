@@ -13,20 +13,22 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
   const { styles } = useStyles()
   const { theme } = useThemeContext()
   const dateString = date?.dateString
-  const isDateOlderThanToday = dateString && dateString > new Date().toISOString().split('T')[0]
-
+  const isDateOlderThanToday =
+    dateString && new Date(dateString).toISOString().split('T')[0] > new Date().toISOString().split('T')[0]
+  const today = state && state === 'today'
   const theDateIsClicked = dateString ? daysStore.getDays().includes(dateString) : false
 
-  const iconColour = isDateOlderThanToday
-    ? theme.colors.grey
-    : theDateIsClicked
-      ? !isDateOlderThanToday
-        ? theme.colors.red
-        : theme.colors.grey
-      : theme.colors.green
+  const iconColour =
+    isDateOlderThanToday && !today
+      ? theme.colors.grey
+      : theDateIsClicked
+        ? !isDateOlderThanToday || today
+          ? theme.colors.red
+          : theme.colors.grey
+        : theme.colors.green
 
   const onDayPress = () => {
-    if (isDateOlderThanToday) {
+    if (isDateOlderThanToday && !today) {
       return
     }
 
@@ -40,7 +42,7 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
 
   return (
     <Pressable style={styles.day} onPress={onDayPress}>
-      {state && state === 'today'  && <View style={styles.today }></View>}
+      {today && <View style={styles.today}></View>}
       <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
       <FontAwesome5 name="wine-glass-alt" size={16} color={iconColour} />
     </Pressable>

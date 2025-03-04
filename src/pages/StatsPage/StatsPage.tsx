@@ -8,6 +8,8 @@ import { useThemeContext } from '../../shared'
 import { ButtonBar, Gauge, ProgressBar, CircularProgress, BarChart } from './components'
 import { useStyles } from './useStyles'
 
+const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+
 export const StatsPage: React.FC = observer(() => {
   const { styles } = useStyles()
   const { theme } = useThemeContext()
@@ -66,6 +68,12 @@ export const StatsPage: React.FC = observer(() => {
     )
   }
 
+  const theMostFrequentWeekDay: number = parseInt(
+    Object.entries(selectedWeekDays).filter((day) => {
+      return day[1] === Math.max(...Object.values(selectedWeekDays))
+    })[0][0]
+  )
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.pageHeadingContainer}>
@@ -96,6 +104,11 @@ export const StatsPage: React.FC = observer(() => {
         </View>
       </View>
       <View style={styles.box}>
+        <View style={styles.progressCircleHeading}>
+          <Text
+            style={styles.progressCircleHeadingText}
+          >{`Most often, you DID THING on ${WeekDays[theMostFrequentWeekDay]}`}</Text>
+        </View>
         <View style={styles.progressCircleWrapper}>
           {Object.entries(selectedWeekDays).map((day, index) => (
             <View key={index}>

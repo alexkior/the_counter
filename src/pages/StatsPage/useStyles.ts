@@ -77,10 +77,23 @@ export const useStyles = () => {
       progressCircleWrapper: {
         display: 'flex',
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         justifyContent: 'space-between',
         width: '100%',
-        padding: 20
+        paddingHorizontal: 20
+      },
+      progressCircleHeading: {
+        paddingTop: 10,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+      },
+      progressCircleHeadingText: {
+        fontSize: 14,
+        fontWeight: 'medium',
+        textAlign: 'center'
       }
     })
   }

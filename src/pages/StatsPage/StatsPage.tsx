@@ -85,22 +85,22 @@ export const StatsPage: React.FC = observer(() => {
         <View style={styles.progressBarWrapper}>
           <View style={styles.progressBarHeading}>
             <View style={styles.progressBarIconWrapper}>
-              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.green} />
+              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.primary} />
             </View>
             <Text
               style={styles.progressBarHeadingText}
             >{`Without THING ${daysPassed - selectedDates} out of ${daysPassed} days`}</Text>
           </View>
-          <ProgressBar value={100 - percentage} color={theme.colors.green} />
+          <ProgressBar value={100 - percentage} color={theme.colors.primary} />
         </View>
         <View style={styles.progressBarWrapper}>
           <View style={styles.progressBarHeading}>
             <View style={styles.progressBarIconWrapper}>
-              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.red} />
+              <FontAwesome5 name="wine-glass-alt" size={20} color={theme.colors.secondary} />
             </View>
             <Text style={styles.progressBarHeadingText}>{`With THING ${selectedDates} out of ${daysPassed} days`}</Text>
           </View>
-          <ProgressBar value={percentage} color={theme.colors.red} />
+          <ProgressBar value={percentage} color={theme.colors.secondary} />
         </View>
       </View>
       <View style={styles.box}>
@@ -114,7 +114,7 @@ export const StatsPage: React.FC = observer(() => {
             <View key={index}>
               <CircularProgress
                 value={Math.floor((weekDaysPassed[index] / 100) * day[1] * 100)}
-                color={theme.colors.red}
+                color={theme.colors.secondary}
                 weekDayIndex={parseInt(day[0])}
               />
             </View>
@@ -122,7 +122,7 @@ export const StatsPage: React.FC = observer(() => {
         </View>
       </View>
       <View style={styles.box}>
-        <BarChart data={sampleData} barColor={theme.colors.red} />
+        <BarChart data={sampleData} barColor={theme.colors.secondary} />
       </View>
       <View style={styles.box}></View>
 

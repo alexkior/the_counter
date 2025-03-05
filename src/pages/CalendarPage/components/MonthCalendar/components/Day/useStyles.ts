@@ -10,7 +10,7 @@ export const useStyles = () => {
       disabledText: {},
       defaultText: {
         fontSize: 14,
-        color: theme.colors.black,
+        color: theme.colors.key,
         fontWeight: 'bold'
       },
       day: {
@@ -31,7 +31,7 @@ export const useStyles = () => {
         alignItems: 'center',
         height: 55,
         width: '60%',
-        borderColor: theme.colors.green,
+        borderColor: theme.colors.primary,
         borderWidth: 2,
         borderRadius: 20,
         backgroundColor: 'transparent'
@@ -46,7 +46,7 @@ export const useStyles = () => {
         alignItems: 'center',
         height: 55,
         width: '60%',
-        borderColor: theme.colors.red,
+        borderColor: theme.colors.secondary,
         borderWidth: 2,
         borderRadius: 20,
         backgroundColor: 'transparent'

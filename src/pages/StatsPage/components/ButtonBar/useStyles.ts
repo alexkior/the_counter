@@ -19,21 +19,21 @@ export const useStyles = () => {
         padding: 10,
         borderRadius: 16,
         marginRight: 10,
-        backgroundColor: theme.colors.lightGrey
+        backgroundColor: theme.colors.elementsLight
       },
       rangeSelectButtonActive: {
         padding: 10,
         borderRadius: 16,
         marginRight: 10,
-        backgroundColor: theme.colors.red
+        backgroundColor: theme.colors.secondary
       },
       rangeSelectButtonText: {
-        color: theme.colors.black,
+        color: theme.colors.key,
         fontSize: 12,
         fontWeight: 'bold'
       },
       rangeSelectButtonTextActive: {
-        color: theme.colors.white,
+        color: theme.colors.background,
         fontSize: 12,
         fontWeight: 'bold'
       }

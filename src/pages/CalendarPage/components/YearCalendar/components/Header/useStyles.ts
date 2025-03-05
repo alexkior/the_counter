@@ -17,7 +17,7 @@ export const useStyles = () => {
       headerText: {
         fontSize: 12,
         fontWeight: 'bold',
-        color: theme.colors.black
+        color: theme.colors.key
       }
     })
   }

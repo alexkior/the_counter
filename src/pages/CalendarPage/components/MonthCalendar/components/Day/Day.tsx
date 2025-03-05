@@ -20,12 +20,12 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
 
   const iconColour =
     isDateOlderThanToday && !today
-      ? theme.colors.grey
+      ? theme.colors.elements
       : theDateIsClicked
         ? !isDateOlderThanToday || today
-          ? theme.colors.red
-          : theme.colors.grey
-        : theme.colors.green
+          ? theme.colors.secondary
+          : theme.colors.elements
+        : theme.colors.primary
 
   const onDayPress = () => {
     if (isDateOlderThanToday && !today) {

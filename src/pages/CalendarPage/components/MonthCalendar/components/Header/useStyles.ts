@@ -9,7 +9,7 @@ export const useStyles = () => {
     styles: StyleSheet.create({
       header: {
         borderTopWidth: 1,
-        borderTopColor: theme.colors.grey,
+        borderTopColor: theme.colors.elements,
         flexDirection: 'column',
         width: '100%',
         justifyContent: 'flex-start',
@@ -19,7 +19,7 @@ export const useStyles = () => {
       headerText: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: theme.colors.black
+        color: theme.colors.key
       }
     })
   }

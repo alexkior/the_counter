@@ -36,7 +36,7 @@ export const CircularProgress = ({
       <Svg width={size} height={size}>
         <Path
           d={`M ${center},${center} m 0,-${radius} a ${radius},${radius} 0 1,1 0,${2 * radius} a ${radius},${radius} 0 1,1 0,-${2 * radius}`}
-          stroke={theme.colors.lightGrey}
+          stroke={theme.colors.elementsLight}
           strokeWidth={strokeWidth}
           fill="none"
         />

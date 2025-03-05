@@ -2,12 +2,12 @@ import { Theme } from './types'
 
 export const TheCounterTheme: Theme = {
   colors: {
-    white: '#FFF',
-    black: '#000',
-    red: '#FF0000',
-    green: '#3CB58A',
-    grey: '#B5B4BC',
-    lightGrey: '#F0F0F0',
+    background: '#FFF',
+    key: '#000',
+    secondary: '#FF0000',
+    primary: '#3CB58A',
+    elements: '#B5B4BC',
+    elementsLight: '#F0F0F0',
   },
   text: {
     size: {

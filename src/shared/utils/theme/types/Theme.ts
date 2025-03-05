@@ -1,11 +1,11 @@
 export type Theme = {
   colors: {
-    white: string
-    black: string
-    red: string
-    green: string
-    grey: string
-    lightGrey: string
+    background: string
+    key: string
+    secondary: string
+    primary: string
+    elements: string
+    elementsLight: string
   }
   text: {
     size: {

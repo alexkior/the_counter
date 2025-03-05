@@ -20,9 +20,9 @@ export const CalendarPage: React.FC = memo(() => {
             <Text style={styles.switchText}>{isYearView ? 'Year' : 'Month'}</Text>
           </Pressable>
           {/* <Switch
-            trackColor={{ false: theme.colors.white, true: theme.colors.white }}
-            thumbColor={isYearView ? theme.colors.green : theme.colors.green}
-            ios_backgroundColor={theme.colors.white}
+            trackColor={{ false: theme.colors.background, true: theme.colors.background }}
+            thumbColor={isYearView ? theme.colors.primary : theme.colors.primary}
+            ios_backgroundColor={theme.colors.background}
             onValueChange={toggleSwitch}
             value={isYearView}
             style={styles.switch}

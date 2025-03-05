@@ -29,7 +29,7 @@ export const ProgressBar = ({ value = 75, color }: ProgressBarProps) => {
   return (
     <View style={styles.container}>
       <Svg width={width} height={10}>
-        {getPath(0, width, theme.colors.lightGrey)}
+        {getPath(0, width, theme.colors.elementsLight)}
         {getPath(0, progressValue, color)}
       </Svg>
     </View>

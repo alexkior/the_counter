@@ -15,7 +15,7 @@ export const useStyles = () => {
       dayText: {
         fontSize: 8,
         fontWeight: 'bold',
-        color: theme.colors.black
+        color: theme.colors.key
       }
     })
   }

@@ -10,7 +10,7 @@ export const useStyles = () => {
     styles: StyleSheet.create({
       container: {
         flex: 1,
-        backgroundColor: theme.colors.white,
+        backgroundColor: theme.colors.background,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -24,7 +24,7 @@ export const useStyles = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: theme.colors.white,
+        backgroundColor: theme.colors.background,
         width: '100%',
         height: 100,
         borderBottomLeftRadius: 20,
@@ -63,9 +63,9 @@ export const useStyles = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: theme.colors.green
+        backgroundColor: theme.colors.primary
       },
-      switchText: { color: theme.colors.white }
+      switchText: { color: theme.colors.background }
     })
   }
 }

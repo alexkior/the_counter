@@ -50,9 +50,9 @@ export const Gauge = ({ value = 75 }) => {
       </View>
       <Svg width={width} height={height}>
         {getArcPath(180, 210, '#1B5E20')}
-        {getArcPath(220, 250, theme.colors.green)}
+        {getArcPath(220, 250, theme.colors.primary)}
         {getArcPath(260, 280, '#DDDDDD')}
-        {getArcPath(290, 320, theme.colors.red)}
+        {getArcPath(290, 320, theme.colors.secondary)}
         {getArcPath(330, 360, '#B71C1C')}
         <Line x1={centerX} y1={centerY} x2={needleEnd.x} y2={needleEnd.y} stroke="black" strokeWidth={4} />
         <Circle cx={centerX} cy={centerY} r={10} fill="white" stroke="black" strokeWidth={3} />

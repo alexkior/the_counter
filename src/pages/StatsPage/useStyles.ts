@@ -9,7 +9,7 @@ export const useStyles = () => {
     styles: StyleSheet.create({
       container: {
         flexGrow: 1,
-        backgroundColor: theme.colors.white,
+        backgroundColor: theme.colors.background,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

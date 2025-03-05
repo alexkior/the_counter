@@ -28,7 +28,7 @@ export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
                 y={chartHeight - barHeight}
                 width={barWidth}
                 height={barHeight}
-                fill={item.value > 0 ? barColor || theme.colors.red : theme.colors.lightGrey}
+                fill={item.value > 0 ? barColor || theme.colors.secondary : theme.colors.elementsLight}
                 rx={4} 
               />
             </View>

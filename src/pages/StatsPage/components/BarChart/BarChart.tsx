@@ -14,7 +14,7 @@ export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
 
   const chartWidth = 300
   const chartHeight = 150
-  const barWidth = chartWidth / data.length - 15 
+  const barWidth = chartWidth / data.length - 15
 
   return (
     <View style={styles.container}>
@@ -29,7 +29,7 @@ export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
                 width={barWidth}
                 height={barHeight}
                 fill={item.value > 0 ? barColor || theme.colors.secondary : theme.colors.elementsLight}
-                rx={4} 
+                rx={4}
               />
             </View>
           )

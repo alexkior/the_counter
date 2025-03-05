@@ -88,7 +88,7 @@ export const useStyles = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%',
+        width: '100%'
       },
       progressCircleHeadingText: {
         fontSize: 14,

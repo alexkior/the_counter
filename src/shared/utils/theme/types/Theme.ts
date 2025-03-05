@@ -3,9 +3,12 @@ export type Theme = {
     background: string
     key: string
     secondary: string
+    secondaryDark: string
     primary: string
+    primaryDark: string
     elements: string
     elementsLight: string
+    elementsDark: string
   }
   text: {
     size: {

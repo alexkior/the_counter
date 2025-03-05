@@ -5,9 +5,12 @@ export const TheCounterTheme: Theme = {
     background: '#FFF',
     key: '#000',
     secondary: '#FF0000',
+    secondaryDark: '#B71C1C',
     primary: '#3CB58A',
+    primaryDark: '#1B5E20',
     elements: '#B5B4BC',
     elementsLight: '#F0F0F0',
+    elementsDark: '#9e9e9e'
   },
   text: {
     size: {

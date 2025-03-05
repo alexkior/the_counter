@@ -1,7 +1,8 @@
-import { View, StyleSheet, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
 import { useThemeContext } from '../../../../shared'
+import { useStyles } from './useStyles'
 
 export const CircularProgress = ({
   value = 75,
@@ -13,6 +14,7 @@ export const CircularProgress = ({
   weekDayIndex: number
 }) => {
   const { theme } = useThemeContext()
+  const { styles } = useStyles()
   const size = 40
   const strokeWidth = 4
   const radius = (size - strokeWidth) / 2
@@ -52,19 +54,3 @@ export const CircularProgress = ({
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingVertical: 10
-  },
-  label: {
-    fontSize: 10,
-    fontWeight: 'bold',
-    top: 26
-  }
-})

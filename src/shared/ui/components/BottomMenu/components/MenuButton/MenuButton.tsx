@@ -1,6 +1,9 @@
-import { StyleSheet, Text, Pressable } from 'react-native'
+import { Text, Pressable } from 'react-native'
 
 import Ionicons from '@expo/vector-icons/Ionicons'
+
+import { useThemeContext } from '../../../../../utils'
+import { useStyles } from './useStyles'
 
 interface BottomMenuProps {
   onPress: () => void
@@ -10,32 +13,13 @@ interface BottomMenuProps {
 }
 
 export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName, title }) => {
+  const { styles } = useStyles()
+  const { theme } = useThemeContext()
   return (
     <Pressable style={styles.button} onPress={onPress}>
-      <Ionicons name={iconName} size={32} color={isActive ? '#FF0000' : '#B5B4BC'} />
+      <Ionicons name={iconName} size={32} color={isActive ? theme.colors.secondary : theme.colors.elements} />
 
       <Text style={isActive ? styles.activeButtonText : styles.buttonText}>{title}</Text>
     </Pressable>
   )
 }
-
-const styles = StyleSheet.create({
-  button: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '33%'
-  },
-  buttonText: {
-    marginTop: 5,
-    fontSize: 10,
-    color: '#B5B4BC'
-  },
-  activeButtonText: {
-    marginTop: 5,
-
-    fontSize: 10,
-    color: '#FF0000'
-  }
-})

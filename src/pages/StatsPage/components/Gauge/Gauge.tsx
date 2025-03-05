@@ -1,10 +1,12 @@
-import { View, StyleSheet, ColorValue, Text } from 'react-native'
+import { View, ColorValue, Text } from 'react-native'
 import Svg, { Path, Circle, Line } from 'react-native-svg'
 
 import { useThemeContext } from '../../../../shared'
+import { useStyles } from './useStyles'
 
 export const Gauge = ({ value = 75 }) => {
   const { theme } = useThemeContext()
+  const { styles } = useStyles()
 
   const width = 300
   const height = 180
@@ -49,72 +51,14 @@ export const Gauge = ({ value = 75 }) => {
         <Text style={styles.legendTextFive}>Very often</Text>
       </View>
       <Svg width={width} height={height}>
-        {getArcPath(180, 210, '#1B5E20')}
+        {getArcPath(180, 210, theme.colors.primaryDark)}
         {getArcPath(220, 250, theme.colors.primary)}
-        {getArcPath(260, 280, '#DDDDDD')}
+        {getArcPath(260, 280, theme.colors.elementsDark)}
         {getArcPath(290, 320, theme.colors.secondary)}
-        {getArcPath(330, 360, '#B71C1C')}
+        {getArcPath(330, 360, theme.colors.secondaryDark)}
         <Line x1={centerX} y1={centerY} x2={needleEnd.x} y2={needleEnd.y} stroke="black" strokeWidth={4} />
         <Circle cx={centerX} cy={centerY} r={10} fill="white" stroke="black" strokeWidth={3} />
       </Svg>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    paddingBottom: 40
-  },
-  legend: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
-    marginTop: 20
-  },
-  legendTextOne: {
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    width: 50,
-    top: 110,
-    color: '#1B5E20'
-  },
-  legendTextTwo: {
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    width: 50,
-    top: 45,
-    color: '#4CAF50'
-  },
-  legendTextThree: {
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    width: 120,
-    top: 20,
-    color: '#9e9e9e'
-  },
-  legendTextFour: {
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    width: 50,
-    top: 45,
-    color: '#D32F2F'
-  },
-  legendTextFive: {
-    fontWeight: 'bold',
-    fontSize: 12,
-    textAlign: 'center',
-    width: 50,
-    top: 110,
-    color: '#B71C1C'
-  }
-})

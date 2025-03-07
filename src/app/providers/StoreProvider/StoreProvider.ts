@@ -16,6 +16,10 @@ class CalendarStore {
   constructor() {
     makeObservable(this, {
       calendars: observable,
+      fetchCalendars: action,
+      createCalendar: action,
+      editCalendar: action,
+      deleteCalendar: action,
       addDay: action,
       removeDay: action
     })

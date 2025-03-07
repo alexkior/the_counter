@@ -19,7 +19,7 @@ export const CalendarPage: React.FC = memo(() => {
         '1',
         'My first calendar',
         'calendar',
-        true,
+        false,
         theme.colors.primary,
         theme.colors.secondary
       )

@@ -1,6 +1,8 @@
 import { useForm, Controller } from 'react-hook-form'
 import { View, Text, TextInput, Button } from 'react-native'
+import ColorPicker from 'react-native-wheel-color-picker'
 
+import { useThemeContext } from '../../shared'
 import { useStyles } from './useStyles'
 
 type CalendarForm = {
@@ -14,6 +16,7 @@ type CalendarForm = {
 
 export const SettingsPage: React.FC = () => {
   const { styles } = useStyles()
+  const { theme } = useThemeContext()
   const {
     control,
     handleSubmit,
@@ -24,8 +27,8 @@ export const SettingsPage: React.FC = () => {
       name: '',
       iconName: '',
       isPositive: false,
-      primaryColor: '',
-      secondaryColor: ''
+      primaryColor: theme.colors.primary,
+      secondaryColor: theme.colors.secondary
     }
   })
 
@@ -65,8 +68,19 @@ export const SettingsPage: React.FC = () => {
         rules={{
           required: true
         }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput placeholder="Primary color" onBlur={onBlur} onChangeText={onChange} value={value} />
+        render={({ field: { onChange, value } }) => (
+          // <TextInput placeholder="Primary color" onBlur={onBlur} onChangeText={onChange} value={value} />
+          <View style={styles.colorPickerContainer}>
+            <ColorPicker
+              color={value}
+              swatchesOnly={false}
+              onColorChange={(color) => onChange(color)}
+              thumbSize={40}
+              sliderSize={40}
+              noSnap={true}
+              row={true}
+            />
+          </View>
         )}
         name="primaryColor"
       />

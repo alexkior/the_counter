@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { observer } from 'mobx-react-lite'
 import { useMemo } from 'react'
 import { useColorScheme } from 'react-native'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import Toast from 'react-native-toast-message'
 
@@ -15,12 +16,14 @@ export const App = observer(() => {
 
   return (
     <SafeAreaProvider>
-      <ThemeContext.Provider value={themeContextValue}>
-        <NavigationContainer>
-          <Navigation />
-          <Toast />
-        </NavigationContainer>
-      </ThemeContext.Provider>
+      <GestureHandlerRootView>
+        <ThemeContext.Provider value={themeContextValue}>
+          <NavigationContainer>
+            <Navigation />
+            <Toast />
+          </NavigationContainer>
+        </ThemeContext.Provider>
+      </GestureHandlerRootView>
     </SafeAreaProvider>
   )
 })

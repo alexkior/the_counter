@@ -8,7 +8,7 @@ export const useStyles = () => {
   return {
     styles: StyleSheet.create({
       container: {
-        flex: 1,
+        flexGrow: 1,
         backgroundColor: theme.colors.background,
         display: 'flex',
         flexDirection: 'column',
@@ -34,6 +34,11 @@ export const useStyles = () => {
         justifyContent: 'space-between',
         width: '100%',
         padding: 20
+      },
+      colorPickerContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 300
       }
     })
   }

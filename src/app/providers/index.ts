@@ -1,1 +1,1 @@
-export { daysStore } from './StoreProvider'
+export { calendarStore } from './StoreProvider'

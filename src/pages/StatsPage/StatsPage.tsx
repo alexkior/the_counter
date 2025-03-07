@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { daysStore } from '../../app'
+import { calendarStore } from '../../app'
 import { useThemeContext } from '../../shared'
 import { ButtonBar, Gauge, ProgressBar, CircularProgress, BarChart } from './components'
 import { useStyles } from './useStyles'
@@ -11,14 +11,15 @@ import { useStyles } from './useStyles'
 const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 export const StatsPage: React.FC = observer(() => {
+  const calendarId = '1'
   const { styles } = useStyles()
   const { theme } = useThemeContext()
-  const startDate = daysStore.getDays()[0]
+  const startDate = calendarStore.getDays(calendarId)[0]
   const today = new Date().toISOString().split('T')[0]
   const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) + 1 : 0
   const weekDaysPassed = countWeekdaysSince(startDate)
-  const selectedDates = daysStore.getDays().length
-  const selectedWeekDays = daysStore.getDays().reduce(
+  const selectedDates = calendarStore.getDays(calendarId).length
+  const selectedWeekDays = calendarStore.getDays(calendarId).reduce(
     (acc: { [key: number]: number }, date: string) => {
       const day = new Date(date).getDay()
       acc[day] = acc[day] ? acc[day] + 1 : 1

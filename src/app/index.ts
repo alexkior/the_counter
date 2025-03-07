@@ -1,3 +1,3 @@
-export { daysStore } from './providers'
+export { calendarStore } from './providers'
 
 export { App } from './App'

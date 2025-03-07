@@ -1,16 +1,32 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { View, Text, Pressable } from 'react-native'
 
-// import { useThemeContext } from '../../shared'
+import { calendarStore } from '../../app'
+import { useThemeContext } from '../../shared'
 import { MonthCalendar } from './components'
 import { YearCalendar } from './components/YearCalendar'
 import { useStyles } from './useStyles'
 
 export const CalendarPage: React.FC = memo(() => {
-  // const { theme } = useThemeContext()
+  const { theme } = useThemeContext()
   const { styles } = useStyles()
   const [isYearView, setIsYearView] = useState(false)
   const toggleSwitch = () => setIsYearView((previousState) => !previousState)
+
+  useEffect(() => {
+    if (calendarStore.calendars.length === 0) {
+      calendarStore.createCalendar(
+        '1',
+        'My first calendar',
+        'calendar',
+        true,
+        theme.colors.primary,
+        theme.colors.secondary
+      )
+    }
+
+    console.log('calendarStore.calendars', calendarStore.calendars)
+  }, [theme.colors.primary, theme.colors.secondary])
 
   return (
     <View style={styles.container}>

@@ -21,6 +21,11 @@ class CalendarStore {
     })
   }
 
+  fetchCalendars() {
+    //TODO: Add actual fetching
+    return this.calendars
+  }
+
   createCalendar(
     id: string,
     name: string,
@@ -55,6 +60,14 @@ class CalendarStore {
       calendar.isPositive = isPositive
       calendar.primaryColor = primaryColor
       calendar.secondaryColor = secondaryColor
+    }
+  }
+
+  deleteCalendar(calendarId: string) {
+    const calendar = this.calendars.find((calendar) => calendar.id === calendarId)
+    if (calendar) {
+      const index = this.calendars.indexOf(calendar)
+      this.calendars.splice(index, 1)
     }
   }
 

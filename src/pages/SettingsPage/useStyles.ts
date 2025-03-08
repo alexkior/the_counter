@@ -13,7 +13,9 @@ export const useStyles = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'flex-start'
+        justifyContent: 'flex-start',
+        paddingHorizontal: 20,
+        paddingBottom: 100
       },
       pageHeadingContainer: {
         display: 'flex',

@@ -1,6 +1,11 @@
+import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { View, Text, TextInput, Button } from 'react-native'
-import ColorPicker from 'react-native-wheel-color-picker'
+import { ScrollView } from 'react-native-gesture-handler'
+
+import ColorPicker, { Panel5 } from 'reanimated-color-picker'
+
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 import { useThemeContext } from '../../shared'
 import { useStyles } from './useStyles'
@@ -17,6 +22,9 @@ type CalendarForm = {
 export const SettingsPage: React.FC = () => {
   const { styles } = useStyles()
   const { theme } = useThemeContext()
+  const [iconPrimaryColor, setIconPrimaryColor] = useState<string>(theme.colors.primary)
+  const [iconSecondaryColor, setIconSecondaryColor] = useState<string>(theme.colors.secondary)
+
   const {
     control,
     handleSubmit,
@@ -35,7 +43,7 @@ export const SettingsPage: React.FC = () => {
   const onSubmit = (data: CalendarForm) => console.log(data)
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.pageHeadingContainer}>
         <Text style={styles.pageHeadingText}>Settings</Text>
       </View>
@@ -63,39 +71,54 @@ export const SettingsPage: React.FC = () => {
         name="iconName"
       />
       {errors.iconName && <Text>This is required.</Text>}
-      <Controller
-        control={control}
-        rules={{
-          required: true
-        }}
-        render={({ field: { onChange, value } }) => (
-          // <TextInput placeholder="Primary color" onBlur={onBlur} onChangeText={onChange} value={value} />
-          <View style={styles.colorPickerContainer}>
-            <ColorPicker
-              color={value}
-              swatchesOnly={false}
-              onColorChange={(color) => onChange(color)}
-              thumbSize={40}
-              sliderSize={40}
-              noSnap={true}
-              row={true}
-            />
-          </View>
-        )}
-        name="primaryColor"
-      />
-      {errors.primaryColor && <Text>This is required.</Text>}
-      <Controller
-        control={control}
-        rules={{
-          required: true
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput placeholder="Secondary color" onBlur={onBlur} onChangeText={onChange} value={value} />
-        )}
-        name="secondaryColor"
-      />
-      {errors.secondaryColor && <Text>This is required.</Text>}
+      <View style={{ display: 'flex', flexDirection: 'row' }}>
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, value } }) => (
+            <View style={styles.colorPickerContainer}>
+              <ColorPicker
+                style={{ width: '70%' }}
+                value={value}
+                onCompleteJS={({ hex }) => {
+                  // do something with the selected color.
+                  setIconPrimaryColor(hex)
+                  onChange(hex)
+                }}
+              >
+                <Panel5 />
+              </ColorPicker>
+            </View>
+          )}
+          name="primaryColor"
+        />
+        {errors.primaryColor && <Text>This is required.</Text>}
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, value } }) => (
+            <View style={styles.colorPickerContainer}>
+              <ColorPicker
+                style={{ width: '70%' }}
+                value={value}
+                onCompleteJS={({ hex }) => {
+                  // do something with the selected color.
+                  setIconSecondaryColor(hex)
+                  onChange(hex)
+                }}
+              >
+                <Panel5 />
+              </ColorPicker>
+            </View>
+          )}
+          name="secondaryColor"
+        />
+        {errors.secondaryColor && <Text>This is required.</Text>}
+      </View>
       <Controller
         control={control}
         rules={{
@@ -107,8 +130,12 @@ export const SettingsPage: React.FC = () => {
         name="id"
       />
       {errors.id && <Text>This is required.</Text>}
+      <View style={{ display: 'flex', flexDirection: 'row' }}>
+        <FontAwesome5 name="wine-glass-alt" size={44} color={iconPrimaryColor} />
+        <FontAwesome5 name="wine-glass-alt" size={44} color={iconSecondaryColor} />
+      </View>
 
       <Button title="Submit" onPress={handleSubmit(onSubmit)} />
-    </View>
+    </ScrollView>
   )
 }

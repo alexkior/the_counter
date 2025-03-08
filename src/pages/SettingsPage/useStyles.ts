@@ -37,10 +37,21 @@ export const useStyles = () => {
         width: '100%',
         padding: 20
       },
+      box: {
+        width: '90%',
+        minHeight: 100,
+        borderRadius: 20,
+        boxShadow: '0px 16px 30px rgba(23, 23, 23, 0.15)',
+        paddingVertical: 10,
+        marginBottom: 30
+      },
       colorPickerContainer: {
-        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        height: 300
+        height: 100,
+        padding: 20
       }
     })
   }

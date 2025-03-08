@@ -1,7 +1,7 @@
 import { View, StyleSheet, ColorValue } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-import { useThemeContext } from '../../../../shared'
+import { themeStore } from '../../../../app'
 
 interface ProgressBarProps {
   value?: number
@@ -9,7 +9,7 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ value = 75, color }: ProgressBarProps) => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
 
   const width = 300
   const progressValue = (value / 100) * width

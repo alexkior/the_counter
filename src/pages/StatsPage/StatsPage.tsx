@@ -3,17 +3,18 @@ import { View, Text, ScrollView } from 'react-native'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore } from '../../app'
-import { useThemeContext } from '../../shared'
+import { calendarStore, themeStore } from '../../app'
 import { ButtonBar, Gauge, ProgressBar, CircularProgress, BarChart } from './components'
 import { useStyles } from './useStyles'
 
 const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
 export const StatsPage: React.FC = observer(() => {
-  const calendarId = '1'
+  const calendar = calendarStore.getCurrentCalendar()
+  const calendarId = calendar ? calendar?.id : '1'
+
   const { styles } = useStyles()
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
   const startDate = calendarStore.getDays(calendarId)[0]
   const today = new Date().toISOString().split('T')[0]
   const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) + 1 : 0

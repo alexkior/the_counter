@@ -1,9 +1,10 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
-import { useThemeContext } from '../../shared'
+import { themeStore } from '../../app'
 
 export const useStyles = () => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   const { width } = Dimensions.get('window')
 
   return {

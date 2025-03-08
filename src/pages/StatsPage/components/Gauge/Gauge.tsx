@@ -1,11 +1,12 @@
 import { View, ColorValue, Text } from 'react-native'
 import Svg, { Path, Circle, Line } from 'react-native-svg'
 
-import { useThemeContext } from '../../../../shared'
+import { themeStore } from '../../../../app'
 import { useStyles } from './useStyles'
 
 export const Gauge = ({ value = 75 }) => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   const { styles } = useStyles()
 
   const width = 300

@@ -1,21 +1,22 @@
 import { Picker } from '@react-native-picker/picker'
+import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { View, Text, TextInput, Button } from 'react-native'
+import { View, Text, Button } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import ColorPicker, { HueSlider } from 'reanimated-color-picker'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { useThemeContext } from '../../shared'
+import { calendarStore, themeStore } from '../../app'
 import { useStyles } from './useStyles'
 
 type CalendarForm = {
-  id: string
-  name: string
+  // id: string
+  // name: string
   iconName: string
-  isPositive: boolean
+  // isPositive: boolean
   primaryColor: string
   secondaryColor: string
 }
@@ -421,9 +422,10 @@ const iconSet = [
   'wine-bottle'
 ]
 
-export const SettingsPage: React.FC = () => {
+export const SettingsPage: React.FC = observer(() => {
   const { styles } = useStyles()
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   const [iconPrimaryColor, setIconPrimaryColor] = useState<string>(theme.colors.primary)
   const [iconSecondaryColor, setIconSecondaryColor] = useState<string>(theme.colors.secondary)
   const [iconName, setIconName] = useState<string>(iconSet[0])
@@ -434,16 +436,18 @@ export const SettingsPage: React.FC = () => {
     formState: { errors }
   } = useForm({
     defaultValues: {
-      id: '',
-      name: '',
+      // id: '',
+      // name: '',
       iconName: '',
-      isPositive: false,
+      // isPositive: false,
       primaryColor: theme.colors.primary,
       secondaryColor: theme.colors.secondary
     }
   })
 
-  const onSubmit = (data: CalendarForm) => console.log(data)
+  const onSubmit = (data: CalendarForm) => {
+    calendarStore.editCalendar('1', 'Name', data.iconName, true, data.primaryColor, data.secondaryColor)
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -451,7 +455,7 @@ export const SettingsPage: React.FC = () => {
         <Text style={styles.pageHeadingText}>Settings</Text>
       </View>
       <View style={styles.pageHeader}></View>
-      <View style={styles.box}>
+      {/* <View style={styles.box}>
         <Controller
           control={control}
           rules={{
@@ -476,33 +480,7 @@ export const SettingsPage: React.FC = () => {
           name="name"
         />
         {errors.name && <Text>This is required.</Text>}
-      </View>
-
-      <View style={styles.box}>
-        <Controller
-          control={control}
-          rules={{
-            required: true
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Picker
-              onBlur={onBlur}
-              selectedValue={value}
-              onValueChange={(v) => {
-                setIconName(v)
-                onChange(v)
-              }}
-              mode="dropdown"
-            >
-              {iconSet.map((icon) => (
-                <Item key={icon} label={icon} value={icon} />
-              ))}
-            </Picker>
-          )}
-          name="iconName"
-        />
-        {errors.iconName && <Text>This is required.</Text>}
-      </View>
+      </View> */}
 
       <View style={styles.box}>
         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
@@ -556,8 +534,33 @@ export const SettingsPage: React.FC = () => {
           {errors.secondaryColor && <Text>This is required.</Text>}
         </View>
       </View>
+      <View style={styles.box}>
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Picker
+              onBlur={onBlur}
+              selectedValue={value}
+              onValueChange={(v) => {
+                setIconName(v)
+                onChange(v)
+              }}
+              mode="dropdown"
+            >
+              {iconSet.map((icon) => (
+                <Item key={icon} label={icon} value={icon} />
+              ))}
+            </Picker>
+          )}
+          name="iconName"
+        />
+        {errors.iconName && <Text>This is required.</Text>}
+      </View>
 
       <Button title="Submit" onPress={handleSubmit(onSubmit)} />
     </ScrollView>
   )
-}
+})

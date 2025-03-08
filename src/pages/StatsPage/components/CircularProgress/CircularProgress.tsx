@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-import { useThemeContext } from '../../../../shared'
+import { themeStore } from '../../../../app'
 import { useStyles } from './useStyles'
 
 export const CircularProgress = ({
@@ -13,7 +13,8 @@ export const CircularProgress = ({
   color: string
   weekDayIndex: number
 }) => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   const { styles } = useStyles()
   const size = 40
   const strokeWidth = 4

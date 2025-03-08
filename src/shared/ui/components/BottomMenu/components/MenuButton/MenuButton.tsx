@@ -2,7 +2,7 @@ import { Text, Pressable } from 'react-native'
 
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-import { useThemeContext } from '../../../../../utils'
+import { themeStore } from '../../../../../../app'
 import { useStyles } from './useStyles'
 
 interface BottomMenuProps {
@@ -14,7 +14,8 @@ interface BottomMenuProps {
 
 export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName, title }) => {
   const { styles } = useStyles()
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   return (
     <Pressable style={styles.button} onPress={onPress}>
       <Ionicons name={iconName} size={32} color={isActive ? theme.colors.secondary : theme.colors.elements} />

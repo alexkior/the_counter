@@ -5,15 +5,17 @@ import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore } from '../../../../../../app'
-import { useThemeContext } from '../../../../../../shared'
+import { calendarStore, themeStore } from '../../../../../../app'
 import { useStyles } from './useStyles'
 
 export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, state }) => {
   // TODO: Replace it with actual id on creation of the calendar
-  const calendarId = '1'
+  const calendar = calendarStore.getCurrentCalendar()
+  const iconName = calendar ? calendar?.iconName : 'wine-glass-alt'
+  const calendarId = calendar ? calendar?.id : '1'
   const { styles } = useStyles()
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
+
   const dateString = date?.dateString
   const isDateOlderThanToday =
     dateString && new Date(dateString).toISOString().split('T')[0] > new Date().toISOString().split('T')[0]
@@ -46,7 +48,7 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
     <Pressable style={styles.day} onPress={onDayPress}>
       {today && <View style={theDateIsClicked ? styles.todayClicked : styles.today}></View>}
       <Text style={[state === 'disabled' ? styles.disabledText : styles.defaultText]}>{date?.day}</Text>
-      <FontAwesome5 name="wine-glass-alt" size={16} color={iconColour} />
+      <FontAwesome5 name={iconName} size={16} color={iconColour} />
     </Pressable>
   )
 })

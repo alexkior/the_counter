@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
 
-import { useThemeContext } from '../../../../../../shared'
+import { themeStore } from '../../../../../../app'
 
 export const useStyles = () => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
 
   return {
     styles: StyleSheet.create({

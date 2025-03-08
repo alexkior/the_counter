@@ -1,7 +1,7 @@
 import { View, StyleSheet, ColorValue } from 'react-native'
 import Svg, { Rect } from 'react-native-svg'
 
-import { useThemeContext } from '../../../../shared'
+import { themeStore } from '../../../../app'
 
 interface BarChartProps {
   data: { month: number; value: number }[]
@@ -10,7 +10,7 @@ interface BarChartProps {
 }
 
 export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
-  const { theme } = useThemeContext()
+  const theme = themeStore.theme
 
   const chartWidth = 300
   const chartHeight = 150

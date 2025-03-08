@@ -37,11 +37,13 @@
     "react-native-svg": "15.8.0",
     "react-native-toast-message": "^2.2.1",
     "reanimated-color-picker": "^4.0.0",
+    "tinycolor2": "^1.6.0",
     "xdate": "^0.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
+    "@types/tinycolor2": "^1.4.6",
     "@types/xdate": "^0.8.35",
     "typescript": "^5.3.3"
   },

@@ -1,1 +1,1 @@
-export { calendarStore } from './StoreProvider'
+export { calendarStore, themeStore } from './StoreProvider'

@@ -20,6 +20,7 @@ class CalendarStore {
   constructor() {
     makeObservable(this, {
       calendars: observable,
+      currentCalendar: observable,
       fetchCalendars: action,
       setCurrentCalendar: action,
       getCurrentCalendar: action,
@@ -164,5 +165,5 @@ class ThemeStore {
   }
 }
 
-export const calendarStore = new CalendarStore()
 export const themeStore = new ThemeStore()
+export const calendarStore = new CalendarStore()

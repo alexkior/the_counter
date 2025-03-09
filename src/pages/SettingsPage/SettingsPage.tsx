@@ -437,11 +437,15 @@ export const SettingsPage: React.FC = observer(() => {
   } = useForm({
     defaultValues: {
       // id: '',
-      name: '',
-      iconName: '',
+      name: calendarStore.currentCalendar ? calendarStore.currentCalendar.name : '',
+      iconName: calendarStore.currentCalendar ? calendarStore.currentCalendar.iconName : iconSet[0],
       // isPositive: false,
-      primaryColor: theme.colors.primary,
-      secondaryColor: theme.colors.secondary
+      primaryColor: calendarStore.currentCalendar?.primaryColor
+        ? calendarStore.currentCalendar?.primaryColor
+        : theme.colors.primary,
+      secondaryColor: calendarStore.currentCalendar?.secondaryColor
+        ? calendarStore.currentCalendar?.secondaryColor
+        : theme.colors.secondary
     }
   })
 
@@ -475,15 +479,20 @@ export const SettingsPage: React.FC = observer(() => {
             required: true
           }}
           render={({ field: { onChange, onBlur, value } }) => (
-            <TextInput placeholder="Name" onBlur={onBlur} onChangeText={onChange} value={value} />
+            <View style={styles.textInputWrapper}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Name"
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+              />
+            </View>
           )}
           name="name"
         />
         {errors.name && <Text>This is required.</Text>}
-      </View>
-
-      <View style={styles.box}>
-        <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
+        <View style={styles.colorPickerContainerWrapper}>
           <Controller
             control={control}
             rules={{
@@ -533,31 +542,31 @@ export const SettingsPage: React.FC = observer(() => {
           />
           {errors.secondaryColor && <Text>This is required.</Text>}
         </View>
-      </View>
-      <View style={styles.box}>
-        <Controller
-          control={control}
-          rules={{
-            required: true
-          }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Picker
-              onBlur={onBlur}
-              selectedValue={value}
-              onValueChange={(v) => {
-                setIconName(v)
-                onChange(v)
-              }}
-              mode="dropdown"
-            >
-              {iconSet.map((icon) => (
-                <Item key={icon} label={icon} value={icon} />
-              ))}
-            </Picker>
-          )}
-          name="iconName"
-        />
-        {errors.iconName && <Text>This is required.</Text>}
+        {/* <View style={styles.iconInputWrapper}> */}
+          <Controller
+            control={control}
+            rules={{
+              required: true
+            }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <Picker
+                onBlur={onBlur}
+                selectedValue={value}
+                onValueChange={(v) => {
+                  setIconName(v)
+                  onChange(v)
+                }}
+                mode="dropdown"
+              >
+                {iconSet.map((icon) => (
+                  <Item key={icon} label={icon} value={icon} />
+                ))}
+              </Picker>
+            )}
+            name="iconName"
+          />
+          {errors.iconName && <Text>This is required.</Text>}
+        {/* </View> */}
       </View>
 
       <Button title="Submit" onPress={handleSubmit(onSubmit)} />

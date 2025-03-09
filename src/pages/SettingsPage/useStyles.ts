@@ -45,13 +45,48 @@ export const useStyles = () => {
         paddingVertical: 10,
         marginBottom: 30
       },
+      colorPickerContainerWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+      },
       colorPickerContainer: {
+        width: '80%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        height: 100,
-        padding: 20
+        height: 70,
+        paddingVertical: 10
+      },
+      textInputWrapper: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        paddingVertical: 10
+      },
+      textInput: {
+        width: '80%',
+        height: 50,
+        backgroundColor: theme.colors.background,
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 20,
+        borderWidth: 1,
+        borderColor: theme.colors.primary
+      },
+      iconInputWrapper: {
+        height: 50,
+        width: '80%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingVertical: 10
       }
     })
   }

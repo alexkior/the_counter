@@ -14,8 +14,7 @@ export const useStyles = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'flex-start',
-        paddingHorizontal: 20,
-        paddingBottom: 100
+        paddingBottom: 150
       },
       pageHeadingContainer: {
         display: 'flex',
@@ -77,7 +76,7 @@ export const useStyles = () => {
         padding: 10,
         marginBottom: 20,
         borderWidth: 1,
-        borderColor: theme.colors.primary
+        borderColor: theme.colors.elementsDark
       },
       iconInputWrapper: {
         height: 50,
@@ -87,6 +86,23 @@ export const useStyles = () => {
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 10
+      },
+      submitButton: {
+        boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)',
+        height: 40,
+        width: 240,
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: theme.colors.primary,
+        color: theme.colors.background
+      },
+      buttonText: {
+        color: theme.colors.background,
+        fontSize: 14,
+        fontWeight: 'bold'
       }
     })
   }

@@ -2,8 +2,9 @@ import { Picker } from '@react-native-picker/picker'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { View, Text, Button, TextInput } from 'react-native'
+import { View, Text, TextInput, Pressable } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
+import Toast from 'react-native-toast-message'
 
 import ColorPicker, { HueSlider } from 'reanimated-color-picker'
 
@@ -430,6 +431,16 @@ export const SettingsPage: React.FC = observer(() => {
   const [iconSecondaryColor, setIconSecondaryColor] = useState<string>(theme.colors.secondary)
   const [iconName, setIconName] = useState<string>(iconSet[0])
 
+  const showToast = () => {
+    Toast.show({
+      type: 'info',
+      text1: 'Calendar is updated!',
+      text2: 'Now colors, icon and name are changed',
+      swipeable: true,
+      autoHide: true
+    })
+  }
+
   const {
     control,
     handleSubmit,
@@ -451,6 +462,7 @@ export const SettingsPage: React.FC = observer(() => {
 
   const onSubmit = (data: CalendarForm) => {
     calendarStore.editCalendar('1', data.name, data.iconName, true, data.primaryColor, data.secondaryColor)
+    showToast()
   }
 
   return (
@@ -543,33 +555,35 @@ export const SettingsPage: React.FC = observer(() => {
           {errors.secondaryColor && <Text>This is required.</Text>}
         </View>
         {/* <View style={styles.iconInputWrapper}> */}
-          <Controller
-            control={control}
-            rules={{
-              required: true
-            }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Picker
-                onBlur={onBlur}
-                selectedValue={value}
-                onValueChange={(v) => {
-                  setIconName(v)
-                  onChange(v)
-                }}
-                mode="dropdown"
-              >
-                {iconSet.map((icon) => (
-                  <Item key={icon} label={icon} value={icon} />
-                ))}
-              </Picker>
-            )}
-            name="iconName"
-          />
-          {errors.iconName && <Text>This is required.</Text>}
+        <Controller
+          control={control}
+          rules={{
+            required: true
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Picker
+              onBlur={onBlur}
+              selectedValue={value}
+              onValueChange={(v) => {
+                setIconName(v)
+                onChange(v)
+              }}
+              mode="dropdown"
+            >
+              {iconSet.map((icon) => (
+                <Item key={icon} label={icon} value={icon} />
+              ))}
+            </Picker>
+          )}
+          name="iconName"
+        />
+        {errors.iconName && <Text>This is required.</Text>}
         {/* </View> */}
       </View>
 
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      <Pressable style={styles.submitButton} onPress={handleSubmit(onSubmit)}>
+        <Text style={styles.buttonText}>Submit</Text>
+      </Pressable>
     </ScrollView>
   )
 })

@@ -9,7 +9,7 @@ interface ProgressBarProps {
 }
 
 export const ProgressBar = ({ value = 75, color }: ProgressBarProps) => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const width = 300
   const progressValue = (value / 100) * width

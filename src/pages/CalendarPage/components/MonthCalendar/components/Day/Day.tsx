@@ -14,7 +14,7 @@ export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, s
   const iconName = calendar ? calendar?.iconName : 'wine-glass-alt'
   const calendarId = calendar ? calendar?.id : '1'
   const { styles } = useStyles()
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const dateString = date?.dateString
   const isDateOlderThanToday =

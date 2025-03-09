@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import { themeStore } from '../../app'
 
 export const useStyles = () => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   return {
     styles: StyleSheet.create({

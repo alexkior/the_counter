@@ -125,7 +125,7 @@ class ThemeStore {
     makeAutoObservable(this)
   }
 
-  get theme(): Theme {
+  getTheme(): Theme {
     const currentCalendar = calendarStore.getCurrentCalendar()
     const primaryColor = currentCalendar ? currentCalendar.primaryColor : '#3CB58A'
     const secondaryColor = currentCalendar ? currentCalendar.secondaryColor : '#FF0000'

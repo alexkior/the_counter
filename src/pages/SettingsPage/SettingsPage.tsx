@@ -424,7 +424,7 @@ const iconSet = [
 
 export const SettingsPage: React.FC = observer(() => {
   const { styles } = useStyles()
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const [iconPrimaryColor, setIconPrimaryColor] = useState<string>(theme.colors.primary)
   const [iconSecondaryColor, setIconSecondaryColor] = useState<string>(theme.colors.secondary)

@@ -14,7 +14,7 @@ interface BottomMenuProps {
 
 export const MenuButton: React.FC<BottomMenuProps> = ({ onPress, isActive, iconName, title }) => {
   const { styles } = useStyles()
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   return (
     <Pressable style={styles.button} onPress={onPress}>

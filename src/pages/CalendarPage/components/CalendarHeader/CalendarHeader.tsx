@@ -23,7 +23,7 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = observer(({ toggleS
             <FontAwesome5
               name={calendarStore.currentCalendar?.iconName}
               size={15}
-              color={themeStore.theme.colors.background}
+              color={themeStore.getTheme().colors.background}
             />
           </View>
         </View>

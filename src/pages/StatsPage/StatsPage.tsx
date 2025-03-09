@@ -14,7 +14,7 @@ export const StatsPage: React.FC = observer(() => {
   const calendarId = calendar ? calendar?.id : '1'
 
   const { styles } = useStyles()
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
   const startDate = calendarStore.getDays(calendarId)[0]
   const today = new Date().toISOString().split('T')[0]
   const daysPassed = startDate ? Math.floor((Date.parse(today) - Date.parse(startDate)) / 86400000) + 1 : 0

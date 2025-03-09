@@ -13,7 +13,7 @@ export const CircularProgress = ({
   color: string
   weekDayIndex: number
 }) => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const { styles } = useStyles()
   const size = 40

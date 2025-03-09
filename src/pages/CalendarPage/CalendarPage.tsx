@@ -7,7 +7,7 @@ import { YearCalendar } from './components/YearCalendar'
 import { useStyles } from './useStyles'
 
 export const CalendarPage: React.FC = () => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
   const { styles } = useStyles()
   const [isYearView, setIsYearView] = useState(false)
   const toggleSwitch = () => setIsYearView((previousState) => !previousState)

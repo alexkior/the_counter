@@ -10,7 +10,7 @@ interface BarChartProps {
 }
 
 export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const chartWidth = 300
   const chartHeight = 150

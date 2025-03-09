@@ -5,7 +5,7 @@ import { themeStore } from '../../../../app'
 import { useStyles } from './useStyles'
 
 export const Gauge = ({ value = 75 }) => {
-  const theme = themeStore.theme
+  const theme = themeStore.getTheme()
 
   const { styles } = useStyles()
 

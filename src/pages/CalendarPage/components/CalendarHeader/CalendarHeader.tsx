@@ -1,6 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import { View, Text, Pressable } from 'react-native'
 
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+
+import { calendarStore, themeStore } from '../../../../app'
 import { useStyles } from './useStyles'
 
 interface CalendarHeaderProps {
@@ -14,6 +17,16 @@ export const CalendarHeader: React.FC<CalendarHeaderProps> = observer(({ toggleS
   return (
     <View style={styles.headerContainer}>
       <View style={styles.switchContainer}>
+        <View style={styles.calendarNameContainer}>
+          <Text style={styles.calendarNameText}>{calendarStore.currentCalendar?.name}</Text>
+          <View style={styles.calendarNameIcon}>
+            <FontAwesome5
+              name={calendarStore.currentCalendar?.iconName}
+              size={15}
+              color={themeStore.theme.colors.background}
+            />
+          </View>
+        </View>
         <Pressable style={styles.switch} onPress={toggleSwitch}>
           <Text style={styles.switchText}>{isYearView ? 'Year' : 'Month'}</Text>
         </Pressable>

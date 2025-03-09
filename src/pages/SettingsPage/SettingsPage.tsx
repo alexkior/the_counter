@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, TextInput } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 
 import ColorPicker, { HueSlider } from 'reanimated-color-picker'
@@ -14,7 +14,7 @@ import { useStyles } from './useStyles'
 
 type CalendarForm = {
   // id: string
-  // name: string
+  name: string
   iconName: string
   // isPositive: boolean
   primaryColor: string
@@ -437,7 +437,7 @@ export const SettingsPage: React.FC = observer(() => {
   } = useForm({
     defaultValues: {
       // id: '',
-      // name: '',
+      name: '',
       iconName: '',
       // isPositive: false,
       primaryColor: theme.colors.primary,
@@ -446,7 +446,7 @@ export const SettingsPage: React.FC = observer(() => {
   })
 
   const onSubmit = (data: CalendarForm) => {
-    calendarStore.editCalendar('1', 'Name', data.iconName, true, data.primaryColor, data.secondaryColor)
+    calendarStore.editCalendar('1', data.name, data.iconName, true, data.primaryColor, data.secondaryColor)
   }
 
   return (
@@ -467,7 +467,7 @@ export const SettingsPage: React.FC = observer(() => {
           name="id"
         />
         {errors.id && <Text>This is required.</Text>}
-      </View>
+      </View> */}
       <View style={styles.box}>
         <Controller
           control={control}
@@ -480,7 +480,7 @@ export const SettingsPage: React.FC = observer(() => {
           name="name"
         />
         {errors.name && <Text>This is required.</Text>}
-      </View> */}
+      </View>
 
       <View style={styles.box}>
         <View style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>

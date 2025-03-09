@@ -29,7 +29,7 @@ export const useStyles = () => {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         width: '100%',
         padding: 16
       },
@@ -59,7 +59,20 @@ export const useStyles = () => {
         justifyContent: 'center',
         backgroundColor: theme.colors.primary
       },
-      switchText: { color: theme.colors.background }
+      switchText: { color: theme.colors.background },
+      calendarNameContainer: {
+        boxShadow: '0px 0px 10px rgba(23, 23, 23, 0.1)',
+        height: 30,
+        width: 200,
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: theme.colors.primary
+      },
+      calendarNameText: { color: theme.colors.background, marginRight: 8 },
+      calendarNameIcon: { marginRight: 8 }
     })
   }
 }

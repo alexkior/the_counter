@@ -1,7 +1,7 @@
 import { View, StyleSheet, ColorValue } from 'react-native'
 import Svg, { Rect } from 'react-native-svg'
 
-import { themeStore } from '../../../../app'
+import { themeStore } from '@app/index'
 
 interface BarChartProps {
   data: { month: number; value: number }[]

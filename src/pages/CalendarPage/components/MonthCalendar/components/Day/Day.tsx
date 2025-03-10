@@ -3,9 +3,9 @@ import { Pressable, Text, View } from 'react-native'
 import { DateData } from 'react-native-calendars'
 import { DayProps } from 'react-native-calendars/src/calendar/day'
 
+import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore, themeStore } from '../../../../../../app'
 import { useStyles } from './useStyles'
 
 export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, state }) => {

@@ -1,7 +1,8 @@
 import { makeAutoObservable } from 'mobx'
 import tinycolor from 'tinycolor2'
 
-import { Theme } from '../../../shared/types'
+import { Theme } from '@shared/types'
+
 import { calendarStore } from './StoreProvider'
 
 export class ThemeStore {

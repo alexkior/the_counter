@@ -8,9 +8,9 @@ import Toast from 'react-native-toast-message'
 
 import ColorPicker, { HueSlider } from 'reanimated-color-picker'
 
+import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore, themeStore } from '../../app'
 import { useStyles } from './useStyles'
 
 type CalendarForm = {

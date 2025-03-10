@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
-import { themeStore } from '../../../../app'
+import { themeStore } from '@app/index'
 
 export const useStyles = () => {
   const theme = themeStore.getTheme()

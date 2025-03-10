@@ -1,6 +1,6 @@
 import { makeObservable, observable, action } from 'mobx'
 
-import { Calendar } from '../../../shared/types'
+import { Calendar } from '@shared/types'
 
 export class CalendarStore {
   calendars: Calendar[] = []

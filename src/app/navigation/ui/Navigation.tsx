@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Pages } from '../../../pages'
-import { BottomMenu, RouteList } from '../../../shared'
+import { Pages } from '@pages/index'
+import { RouteList } from '@shared/types'
+import { BottomMenu } from '@shared/ui'
 
 const Tab = createBottomTabNavigator<RouteList>()
 

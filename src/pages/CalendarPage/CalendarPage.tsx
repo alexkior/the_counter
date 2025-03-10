@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 
-import { calendarStore, themeStore } from '../../app'
+import { calendarStore, themeStore } from '@app/index'
+
 import { CalendarHeader, MonthCalendar } from './components'
 import { YearCalendar } from './components/YearCalendar'
 import { useStyles } from './useStyles'

@@ -1,7 +1,7 @@
 import { View, StyleSheet, ColorValue } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
-import { themeStore } from '../../../../app'
+import { themeStore } from '@app/index'
 
 interface ProgressBarProps {
   value?: number

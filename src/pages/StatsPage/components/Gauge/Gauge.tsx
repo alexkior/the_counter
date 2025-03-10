@@ -1,7 +1,7 @@
 import { View, ColorValue, Text } from 'react-native'
 import Svg, { Path, Circle, Line } from 'react-native-svg'
 
-import { themeStore } from '../../../../app'
+import { themeStore } from '@app/index'
 import { useStyles } from './useStyles'
 
 export const Gauge = ({ value = 75 }) => {

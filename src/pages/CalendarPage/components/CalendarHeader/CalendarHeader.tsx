@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite'
 import { View, Text, Pressable } from 'react-native'
 
+import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore, themeStore } from '../../../../app'
 import { useStyles } from './useStyles'
 
 interface CalendarHeaderProps {

@@ -3,7 +3,8 @@ import { useNavigation, useNavigationState } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 
-import { RouteList } from '../../../types'
+import { RouteList } from '@shared/types'
+
 import { MenuButton } from './components'
 import { useStyles } from './useStyles'
 

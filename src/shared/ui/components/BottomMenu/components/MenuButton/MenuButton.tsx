@@ -2,7 +2,7 @@ import { Text, Pressable } from 'react-native'
 
 import Ionicons from '@expo/vector-icons/Ionicons'
 
-import { themeStore } from '../../../../../../app'
+import { themeStore } from '@app/index'
 import { useStyles } from './useStyles'
 
 interface BottomMenuProps {

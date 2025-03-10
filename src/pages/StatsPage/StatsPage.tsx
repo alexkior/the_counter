@@ -3,7 +3,7 @@ import { View, Text, ScrollView } from 'react-native'
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { calendarStore, themeStore } from '../../app'
+import { calendarStore, themeStore } from '@app/index'
 import { ButtonBar, Gauge, ProgressBar, CircularProgress } from './components'
 import { useStyles } from './useStyles'
 

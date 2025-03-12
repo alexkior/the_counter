@@ -2,9 +2,10 @@ import { memo } from 'react'
 import { CalendarList } from 'react-native-calendars'
 
 import { MonthDay, MonthHeader } from '../'
+import { MonthCalendarProps } from './MonthCalendar.types'
 import { useStyles } from './useStyles'
 
-export const MonthCalendar: React.FC<{ isYearView: boolean }> = memo(({ isYearView }) => {
+export const MonthCalendar: React.FC<MonthCalendarProps> = memo(({ isYearView }) => {
   const RANGE = 12
   const { styles } = useStyles(isYearView)
 

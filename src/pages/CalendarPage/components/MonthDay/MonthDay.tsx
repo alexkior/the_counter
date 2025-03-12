@@ -1,14 +1,13 @@
 import { observer } from 'mobx-react-lite'
 import { Pressable, Text, View } from 'react-native'
-import { DateData } from 'react-native-calendars'
-import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
+import { MonthDayProps } from './MonthDay.types'
 import { useStyles } from './useStyles'
 
-export const MonthDay: React.FC<DayProps & { date?: DateData }> = observer(({ date, state }) => {
+export const MonthDay: React.FC<MonthDayProps> = observer(({ date, state }) => {
   // TODO: Replace it with actual id on creation of the calendar
   const calendar = calendarStore.getCurrentCalendar()
   const iconName = calendar ? calendar?.iconName : 'wine-glass-alt'

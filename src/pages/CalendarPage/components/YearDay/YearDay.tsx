@@ -5,7 +5,7 @@ import { DayProps } from 'react-native-calendars/src/calendar/day'
 
 import { useStyles } from './useStyles'
 
-export const Day: React.FC<DayProps & { date?: DateData }> = memo(({ date }) => {
+export const YearDay: React.FC<DayProps & { date?: DateData }> = memo(({ date }) => {
   const { styles } = useStyles()
   return (
     <View style={styles.day}>

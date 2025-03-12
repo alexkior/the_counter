@@ -1,2 +1,6 @@
 export { MonthCalendar } from './MonthCalendar'
-export { CalendarHeader } from './CalendarHeader'
+export { PageHeader } from './PageHeader'
+export { YearHeader } from './YearHeader'
+export { YearDay } from './YearDay'
+export { MonthHeader } from './MonthHeader'
+export { MonthDay } from './MonthDay'

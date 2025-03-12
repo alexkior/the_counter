@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { View, ScrollView, Dimensions } from 'react-native'
 import { Calendar } from 'react-native-calendars'
 
-import { Day, Header } from './components'
+import { YearDay, YearHeader } from '../'
 import { useStyles } from './useStyles'
 
 export const YearCalendar: React.FC = memo(() => {
@@ -38,8 +38,8 @@ export const YearCalendar: React.FC = memo(() => {
                 hideArrows
                 disableMonthChange
                 hideExtraDays
-                renderHeader={Header}
-                dayComponent={Day}
+                renderHeader={YearHeader}
+                dayComponent={YearDay}
                 height={100}
                 current={`${year}-${monthStr}-01`}
               />

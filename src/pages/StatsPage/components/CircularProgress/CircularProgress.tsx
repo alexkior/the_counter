@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import Svg, { Path } from 'react-native-svg'
 
 import { themeStore } from '@app/index'
+
 import { useStyles } from './useStyles'
 
 export const CircularProgress = ({

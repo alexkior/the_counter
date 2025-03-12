@@ -8,7 +8,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
 import { useStyles } from './useStyles'
 
-export const Day: React.FC<DayProps & { date?: DateData }> = observer(({ date, state }) => {
+export const MonthDay: React.FC<DayProps & { date?: DateData }> = observer(({ date, state }) => {
   // TODO: Replace it with actual id on creation of the calendar
   const calendar = calendarStore.getCurrentCalendar()
   const iconName = calendar ? calendar?.iconName : 'wine-glass-alt'

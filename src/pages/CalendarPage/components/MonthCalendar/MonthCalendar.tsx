@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { CalendarList } from 'react-native-calendars'
 
-import { Day, Header } from './components'
+import { MonthDay, MonthHeader } from '../'
 import { useStyles } from './useStyles'
 
 export const MonthCalendar: React.FC<{ isYearView: boolean }> = memo(({ isYearView }) => {
@@ -13,8 +13,8 @@ export const MonthCalendar: React.FC<{ isYearView: boolean }> = memo(({ isYearVi
       calendarHeight={400}
       style={styles.calendar}
       hideDayNames
-      dayComponent={Day}
-      renderHeader={Header}
+      dayComponent={MonthDay}
+      renderHeader={MonthHeader}
       pastScrollRange={RANGE}
       futureScrollRange={RANGE}
     />

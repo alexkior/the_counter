@@ -4,7 +4,7 @@ import XDate from 'xdate'
 
 import { useStyles } from './useStyles'
 
-export function Header(date?: XDate) {
+export function YearHeader(date?: XDate) {
   const header = date?.toString('MMMM yyyy')
   const [month] = header ? header.split(' ') : ['', '']
   const { styles } = useStyles()

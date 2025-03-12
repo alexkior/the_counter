@@ -4,14 +4,10 @@ import { View, Text, Pressable } from 'react-native'
 import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
+import { PageHeaderProps } from './PageHeader.types'
 import { useStyles } from './useStyles'
 
-interface CalendarHeaderProps {
-  toggleSwitch: () => void
-  isYearView: boolean
-}
-
-export const CalendarHeader: React.FC<CalendarHeaderProps> = observer(({ toggleSwitch, isYearView }) => {
+export const PageHeader: React.FC<PageHeaderProps> = observer(({ toggleSwitch, isYearView }) => {
   const { styles } = useStyles()
 
   return (

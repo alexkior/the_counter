@@ -3,17 +3,11 @@ import Svg, { Path } from 'react-native-svg'
 
 import { themeStore } from '@app/index'
 
+import { CircularProgressProps } from './CircularProgress.types'
 import { useStyles } from './useStyles'
 
-export const CircularProgress = ({
-  value = 75,
-  color,
-  weekDayIndex
-}: {
-  value: number
-  color: string
-  weekDayIndex: number
-}) => {
+export const CircularProgress = (props: CircularProgressProps) => {
+  const { value = 75, color, weekDayIndex } = props
   const theme = themeStore.getTheme()
 
   const { styles } = useStyles()

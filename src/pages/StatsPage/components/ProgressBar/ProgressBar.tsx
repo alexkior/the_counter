@@ -3,12 +3,10 @@ import Svg, { Path } from 'react-native-svg'
 
 import { themeStore } from '@app/index'
 
-interface ProgressBarProps {
-  value?: number
-  color?: ColorValue
-}
+import { ProgressBarProps } from './ProgressBar.types'
 
-export const ProgressBar = ({ value = 75, color }: ProgressBarProps) => {
+export const ProgressBar = (props: ProgressBarProps) => {
+  const { value = 75, color } = props
   const theme = themeStore.getTheme()
 
   const width = 300

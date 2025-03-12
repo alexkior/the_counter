@@ -7,7 +7,8 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import { PageHeaderProps } from './PageHeader.types'
 import { useStyles } from './useStyles'
 
-export const PageHeader: React.FC<PageHeaderProps> = observer(({ toggleSwitch, isYearView }) => {
+export const PageHeader: React.FC<PageHeaderProps> = observer((props) => {
+  const { toggleSwitch, isYearView } = props
   const { styles } = useStyles()
 
   return (

@@ -1,15 +1,12 @@
-import { View, StyleSheet, ColorValue } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import Svg, { Rect } from 'react-native-svg'
 
 import { themeStore } from '@app/index'
 
-interface BarChartProps {
-  data: { month: number; value: number }[]
-  maxValue?: number
-  barColor?: ColorValue
-}
+import { BarChartProps } from './BarChart.types'
 
-export const BarChart = ({ data, maxValue = 30, barColor }: BarChartProps) => {
+export const BarChart = (props: BarChartProps) => {
+  const { data, maxValue = 30, barColor } = props
   const theme = themeStore.getTheme()
 
   const chartWidth = 300

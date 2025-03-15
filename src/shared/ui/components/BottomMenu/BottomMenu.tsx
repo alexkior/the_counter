@@ -5,7 +5,7 @@ import { View } from 'react-native'
 
 import { RouteList } from '@shared/types'
 
-import { MenuButton } from './components'
+import { MenuButton } from '../MenuButton'
 import { useStyles } from './useStyles'
 
 export const BottomMenu: React.FC = () => {

@@ -11,16 +11,14 @@ export const YearCalendar: React.FC = memo(() => {
   const { styles } = useStyles()
 
   return (
-    <ScrollView style={styles.wrapper}>
-      <View style={styles.container}>
+    <View style={styles.wrapper}>
+      <ScrollView contentContainerStyle={styles.container}>
         {months.map((month) => {
           const monthStr = month < 10 ? `0${month}` : month.toString()
           return (
-            <View
-              key={month}
-              style={styles.calendarWrapper}
-            >
+            <View key={month} style={styles.calendarWrapper}>
               <Calendar
+                key={month}
                 displayLoadingIndicator
                 hideDayNames
                 hideArrows
@@ -34,7 +32,7 @@ export const YearCalendar: React.FC = memo(() => {
             </View>
           )
         })}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   )
 })

@@ -1,1 +1,1 @@
-export { BottomMenu } from './components'
+export { BottomMenu, Button } from './components'

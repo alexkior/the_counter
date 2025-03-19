@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker'
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { View, Text, TextInput, Pressable } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import Toast from 'react-native-toast-message'
 
@@ -11,6 +11,7 @@ import ColorPicker, { HueSlider } from 'reanimated-color-picker'
 import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 import { iconSet } from '@shared/constants'
+import { Button } from '@shared/ui'
 
 import { useStyles } from './useStyles'
 
@@ -182,10 +183,7 @@ export const SettingsPage: React.FC = observer(() => {
         {errors.iconName && <Text>This is required.</Text>}
         {/* </View> */}
       </View>
-
-      <Pressable style={styles.submitButton} onPress={handleSubmit(onSubmit)}>
-        <Text style={styles.buttonText}>Submit</Text>
-      </Pressable>
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
     </ScrollView>
   )
 })

@@ -4,7 +4,7 @@ import { View, Text, ScrollView } from 'react-native'
 import { calendarStore, themeStore } from '@app/index'
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
 
-import { ButtonBar, Gauge, ProgressBar, CircularProgress } from './components'
+import { ButtonBar, Gauge, ProgressBar, CircularProgress, BarChart } from './components'
 import { useStyles } from './useStyles'
 
 const WeekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -36,20 +36,20 @@ export const StatsPage: React.FC = observer(() => {
     : 0
   console.log(percentage, daysPassed, selectedDates)
 
-  // const sampleData = [
-  //   { month: 1, value: 25 },
-  //   { month: 2, value: 15 },
-  //   { month: 3, value: 2 },
-  //   { month: 4, value: 2 },
-  //   { month: 5, value: 2 },
-  //   { month: 6, value: 2 },
-  //   { month: 7, value: 2 },
-  //   { month: 8, value: 2 },
-  //   { month: 9, value: 2 },
-  //   { month: 10, value: 2 },
-  //   { month: 11, value: 2 },
-  //   { month: 12, value: 2 }
-  // ]
+  const sampleData = [
+    { month: 1, value: 25 },
+    { month: 2, value: 15 },
+    { month: 3, value: 2 },
+    { month: 4, value: 2 },
+    { month: 5, value: 2 },
+    { month: 6, value: 2 },
+    { month: 7, value: 2 },
+    { month: 8, value: 2 },
+    { month: 9, value: 2 },
+    { month: 10, value: 2 },
+    { month: 11, value: 2 },
+    { month: 12, value: 2 }
+  ]
 
   function countWeekdaysSince(dateStr: string): Record<string, number> {
     const startDate = new Date(dateStr)
@@ -123,12 +123,9 @@ export const StatsPage: React.FC = observer(() => {
           ))}
         </View>
       </View>
-      {/* <View style={styles.box}>
+      <View style={styles.box}>
         <BarChart data={sampleData} barColor={theme.colors.secondary} />
       </View>
-      <View style={styles.box}></View>
-
-      <View style={styles.pageHeader}></View> */}
     </ScrollView>
   )
 })

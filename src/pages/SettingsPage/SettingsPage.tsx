@@ -119,7 +119,6 @@ export const SettingsPage: React.FC = observer(() => {
                   style={{ width: '70%' }}
                   value={value}
                   onCompleteJS={({ hex }) => {
-                    // do something with the selected color.
                     setIconPrimaryColor(hex)
                     onChange(hex)
                   }}

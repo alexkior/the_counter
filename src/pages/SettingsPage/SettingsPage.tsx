@@ -32,7 +32,9 @@ export const SettingsPage: React.FC = observer(() => {
 
   const [iconPrimaryColor, setIconPrimaryColor] = useState<string>(theme.colors.primary)
   const [iconSecondaryColor, setIconSecondaryColor] = useState<string>(theme.colors.secondary)
-  const [iconName, setIconName] = useState<string>(iconSet[0])
+  const [iconName, setIconName] = useState<string>(
+    calendarStore.currentCalendar ? calendarStore.currentCalendar.iconName : iconSet[0]
+  )
 
   const showToast = () => {
     Toast.show({
@@ -43,6 +45,8 @@ export const SettingsPage: React.FC = observer(() => {
       autoHide: true
     })
   }
+
+  console.log('calendarStore.currentCalendar.iconName', calendarStore?.currentCalendar?.iconName)
 
   const {
     control,

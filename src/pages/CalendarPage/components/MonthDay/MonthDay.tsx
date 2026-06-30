@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { Pressable, Text, View } from 'react-native'
 
 import { calendarStore, themeStore } from '@app/index'
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 import { MonthDayProps } from './MonthDay.types'
 import { useStyles } from './useStyles'

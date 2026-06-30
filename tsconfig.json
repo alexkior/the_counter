@@ -2,10 +2,11 @@
   "extends": "expo/tsconfig.base",
   "extensions": ["ts", "tsx"],
   "compilerOptions": {
+    "module": "commonjs",
     "strict": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": ".",
     "paths": {
       "@src": ["./src/*"],
       "@app/*": ["./src/app/*"],

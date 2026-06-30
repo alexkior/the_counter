@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite'
 import { View, Text, Pressable } from 'react-native'
 
 import { calendarStore, themeStore } from '@app/index'
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 import { PageHeaderProps } from './PageHeader.types'
 import { useStyles } from './useStyles'

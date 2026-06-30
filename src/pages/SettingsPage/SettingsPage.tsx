@@ -9,7 +9,7 @@ import Toast from 'react-native-toast-message'
 import ColorPicker, { HueSlider } from 'reanimated-color-picker'
 
 import { calendarStore, themeStore } from '@app/index'
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5'
+import { FontAwesome5 } from '@expo/vector-icons'
 import { iconSet } from '@shared/constants'
 import { Button } from '@shared/ui'
 

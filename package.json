@@ -13,6 +13,7 @@
     "sanity-checks": "npm run ts-check && npm run lint && npm run format"
   },
   "dependencies": {
+    "@expo/vector-icons": "15.0.3",
     "@react-native-picker/picker": "2.11.4",
     "@react-navigation/bottom-tabs": "^7.18.3",
     "@react-navigation/native": "^7.3.4",
@@ -23,6 +24,7 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "expo": "^56.0.12",
+    "expo-font": "~56.0.7",
     "expo-status-bar": "~56.0.4",
     "mobx": "^6.16.1",
     "mobx-react-lite": "^4.1.1",
